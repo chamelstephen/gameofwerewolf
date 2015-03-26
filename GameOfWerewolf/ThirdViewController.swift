@@ -14,6 +14,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var mytableview:UITableView!
     //@IBOutlet var myscrollview:UIScrollView!
     
+    
     // Tableで使用する配列を定義する.
     let myWerewolfItems: NSArray = ["人狼"]
     let myCitizenItems: NSArray = ["市民", "占い師", "怪盗"]
