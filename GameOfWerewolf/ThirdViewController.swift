@@ -14,18 +14,17 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var mytableview:UITableView!
     //@IBOutlet var myscrollview:UIScrollView!
     
-    
     // Tableで使用する配列を定義する.
-    let myWerewolfItems: NSArray = ["人狼"]
-    let myCitizenItems: NSArray = ["市民", "占い師", "怪盗"]
-    let myFoxItems: NSArray = ["きつね"]
+    var myWerewolfItems: [String] = ["人狼"]
+    var myCitizenItems: [String] = ["市民", "占い師", "怪盗"]
+    var myFoxItems: [String] = ["きつね"]
     
-    let myPlayerItems: NSArray = ["プレイヤー１", "プレーヤー２", "プレイヤー３"]
+    var myPlayerItems: [String] = ["プレイヤー１", "プレーヤー２", "プレイヤー３"]
     
     // Sectionで使用する配列を定義する.
-    let mySections: NSArray = ["WereWolf Side", "Citizen Side", "Fox Side"]
+    var mySections: [String] = ["WereWolf Side", "Citizen Side", "Fox Side"]
     
-    let myPlayerSections: NSArray = ["Players"]
+    var myPlayerSections: [String] = ["Players"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +39,13 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         var width:CGFloat = self.view.bounds.width;
         var height:CGFloat = self.view.bounds.height
+        
+        println("mySections:\(mySections)")
+        println("myPlayerSections:\(myPlayerSections)")
+        
+        println("\(mySections.count)")
+        println("\(myPlayerSections.count)")
+        
         
         //myscrollview.contentSize = CGSizeMake(width,height*2)
         //myscrollview.pagingEnabled = false
@@ -90,13 +96,13 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         switch mySegcon.selectedSegmentIndex{
         case 0:
-            return mySections[section] as? String
+            return mySections[section]
             
         case 1:
-            return myPlayerSections[section] as? String
+            return myPlayerSections[0]
             
         default:
-            return mySections[section] as? String
+            return mySections[section]
         }
         
     }
@@ -117,6 +123,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     */
+    
     /*
     テーブルに表示する配列の総数を返す.
     */
@@ -135,8 +142,6 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
         case 1:
-            self.mytableview.reloadData()
-            
             if section == 0 {
                 return myPlayerItems.count
             } else {
@@ -153,7 +158,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
             } else {
                 return 0
             }
-            
+
         }
         
     }
@@ -163,7 +168,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath) as UITableViewCell
         
         switch mySegcon.selectedSegmentIndex{
         case 0:
@@ -176,8 +181,6 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
         case 1:
-            self.mytableview.reloadData()
-            
             if indexPath.section == 0 {
                 cell.textLabel?.text = "\(myPlayerItems[indexPath.row])"
             }
@@ -194,7 +197,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
         
     }
-
+    
+    
     @IBAction func segconChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex{
         case 0:
@@ -204,8 +208,9 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
             println("1")
             
         default:
-            println("2")
+            println("0")
         }
     }
+    
         
 }
