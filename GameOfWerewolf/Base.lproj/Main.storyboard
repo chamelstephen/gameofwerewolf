@@ -258,18 +258,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QPW-84-1rb">
-                                <rect key="frame" x="81" y="33" width="159" height="29"/>
-                                <segments>
-                                    <segment title="役職"/>
-                                    <segment title="プレーヤー"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segconChanged:" destination="faG-DJ-Lb6" eventType="touchUpInside" id="x6g-Dl-Omq"/>
-                                </connections>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ycd-s6-VHw">
-                                <rect key="frame" x="0.0" y="69" width="320" height="347"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" rowHeight="80" id="TXM-hF-Nw0">
@@ -281,6 +271,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QPW-84-1rb">
+                                <rect key="frame" x="16" y="8" width="288" height="29"/>
+                                <segments>
+                                    <segment title="役職"/>
+                                    <segment title="プレーヤー"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segconChanged:" destination="faG-DJ-Lb6" eventType="valueChanged" id="szt-QI-wWM"/>
+                                    <action selector="segconchanged:" destination="faG-DJ-Lb6" eventType="valueChanged" id="z6f-71-I64"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -288,7 +289,6 @@
                     <navigationItem key="navigationItem" title="設定変更" id="Tnm-aH-pTv"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="mySegcon" destination="QPW-84-1rb" id="aaB-EW-dj3"/>
                         <outlet property="mytableview" destination="Ycd-s6-VHw" id="cvg-rV-nsd"/>
                     </connections>
                 </viewController>

@@ -31,7 +31,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         // Do any additional setup after loading the view.
         
-        mySegcon.addTarget(self, action: "segconChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        //mySegcon.addTarget(self, action: "segconChanged:", forControlEvents: UIControlEvents.ValueChanged)
         
         mytableview.delegate=self
         mytableview.dataSource=self
@@ -75,15 +75,15 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         switch mySegcon.selectedSegmentIndex{
         case 0:
-            println("役職設定を選択しました")
+            //println("役職設定を選択しました")
             return mySections.count
             
         case 1:
-            println("プレイヤー設定を選択しました")
+            //println("プレイヤー設定を選択しました")
             return myPlayerSections.count
             
         default:
-            println("役職設定を選択しました")
+            //println("役職設定を選択しました")
             return mySections.count
         }
         
@@ -142,6 +142,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
         case 1:
+            self.mytableview.reloadData()
             if section == 0 {
                 return myPlayerItems.count
             } else {
@@ -198,19 +199,33 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    
+    @IBAction func segconchanged(sender: UISegmentedControl){
+        switch mySegcon.selectedSegmentIndex{
+        case 0:
+            println("0")
+            
+        case 1:
+            self.mytableview.reloadData()
+            
+        default:
+            println("0")
+        }
+    }
+    /*
     @IBAction func segconChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex{
         case 0:
             println("0")
             
         case 1:
-            println("1")
+            //println("1")
+            self.mytableview.reloadData()
             
         default:
             println("0")
         }
     }
+    */
     
         
 }
