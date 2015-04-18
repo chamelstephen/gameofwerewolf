@@ -10,10 +10,11 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
-    @IBOutlet var playernumberlabel:UILabel!
-    @IBOutlet var playerplus:UIButton!
-    @IBOutlet var playerminus:UIButton!
-    var playernumber:Int=3
+    @IBOutlet var playernumberlabel : UILabel!
+    @IBOutlet var playerplus : UIButton!
+    @IBOutlet var playerminus : UIButton!
+    
+    var playernumber : Int = 3
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ class SecondViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let backButton: UIBarButtonItem = UIBarButtonItem()
-        backButton.title = "戻る"
+        backButton.title = "保存"
         navigationItem.backBarButtonItem = backButton;
     }
 
@@ -31,36 +32,22 @@ class SecondViewController: UIViewController {
     }
     
     @IBAction func playernumberplus(){
-        playernumber=playernumber+1
-        
-        if playernumber<3{
-            playernumber=3
+        if playernumber == 10 {
+            playernumber = playernumber + 0
             
-            playerminus.enabled=false
-        }
-        
-        if playernumber>10{
-            playernumber=10
-            
-            playerplus.enabled=false
+        } else {
+            playernumber = playernumber + 1
         }
         
         playernumberlabel.text="\(playernumber)"
     }
     
     @IBAction func playernumberminus(){
-        playernumber=playernumber-1
-        
-        if playernumber<3{
-            playernumber=3
+        if playernumber == 3 {
+            playernumber = playernumber - 0
             
-            playerminus.enabled=false
-        }
-        
-        if playernumber>10{
-            playernumber=10
-            
-            playerplus.enabled=false
+        } else {
+            playernumber = playernumber - 1
         }
         
         playernumberlabel.text="\(playernumber)"

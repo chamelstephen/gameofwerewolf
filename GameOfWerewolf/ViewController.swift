@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
         let okAction = UIAlertAction(title: "一つの端末でプレイ", style: .Default) { (action) -> Void in
             var targetView: AnyObject = self.storyboard!.instantiateViewControllerWithIdentifier( "navigationcontroller" )
-            self.presentViewController( targetView as UINavigationController, animated: true, completion: nil)
+            self.presentViewController( targetView as! UINavigationController, animated: true, completion: nil)
 
             
             println("単一端末でゲームを開始します")
