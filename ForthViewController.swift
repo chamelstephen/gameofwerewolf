@@ -74,6 +74,7 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.textLabel?.text = "\(teruteruitems[indexPath.row])"
         }
         
+        /*
         var playerchangestepper = UIStepper(target: self, action:"stepperchanged:")
         playerchangestepper.center = CGPointMake(280, 10)
         if indexPath.section == 0 && indexPath.row == 0 {
@@ -97,6 +98,7 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } 
         
         cell.contentView.addSubview(playerchangestepper)
+*/
         
         return cell
     }
