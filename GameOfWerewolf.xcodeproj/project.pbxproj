@@ -16,6 +16,8 @@
 		D797FEBE1AB20031005C7CB7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D797FEBD1AB20031005C7CB7 /* Images.xcassets */; };
 		D797FEC11AB20031005C7CB7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D797FEBF1AB20031005C7CB7 /* LaunchScreen.xib */; };
 		D797FECD1AB20031005C7CB7 /* GameOfWerewolfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797FECC1AB20031005C7CB7 /* GameOfWerewolfTests.swift */; };
+		D7CA0F6C1B0739E800CBFF96 /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA0F6B1B0739E800CBFF96 /* FifthViewController.swift */; };
+		D7CA0F6E1B073C2D00CBFF96 /* SixthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA0F6D1B073C2D00CBFF96 /* SixthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		D797FEC61AB20031005C7CB7 /* GameOfWerewolfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameOfWerewolfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D797FECB1AB20031005C7CB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D797FECC1AB20031005C7CB7 /* GameOfWerewolfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfWerewolfTests.swift; sourceTree = "<group>"; };
+		D7CA0F6B1B0739E800CBFF96 /* FifthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
+		D7CA0F6D1B073C2D00CBFF96 /* SixthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 				D79560131AB2FC2D00016470 /* SecondViewController.swift */,
 				D79560151AB83F0B00016470 /* ThirdViewController.swift */,
 				D704E2571AE246BA00D6F5E4 /* ForthViewController.swift */,
+				D7CA0F6B1B0739E800CBFF96 /* FifthViewController.swift */,
+				D7CA0F6D1B073C2D00CBFF96 /* SixthViewController.swift */,
 				D797FEBA1AB20031005C7CB7 /* Main.storyboard */,
 				D797FEBD1AB20031005C7CB7 /* Images.xcassets */,
 				D797FEBF1AB20031005C7CB7 /* LaunchScreen.xib */,
@@ -221,6 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7CA0F6C1B0739E800CBFF96 /* FifthViewController.swift in Sources */,
+				D7CA0F6E1B073C2D00CBFF96 /* SixthViewController.swift in Sources */,
 				D79560141AB2FC2D00016470 /* SecondViewController.swift in Sources */,
 				D797FEB91AB20031005C7CB7 /* ViewController.swift in Sources */,
 				D79560161AB83F0B00016470 /* ThirdViewController.swift in Sources */,

@@ -10,7 +10,8 @@ import UIKit
 
 class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
     
-    @IBOutlet var mytableview: UITableView!
+    @IBOutlet var mytableview : UITableView!
+    @IBOutlet var playerset : UIButton!
     
     // Tableで使用する配列を定義する.
     var myPlayerItems: NSMutableArray = ["プレイヤー１", "プレーヤー２", "プレイヤー３"]
@@ -28,6 +29,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         mytableview.delegate = self
         mytableview.dataSource = self
         mytableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        
         
         var width: CGFloat = self.view.bounds.width
         var height: CGFloat = self.view.bounds.height
@@ -69,7 +71,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         
     }
-*/
+    */
     
     /*
     テーブルに表示する配列の総数を返す.
@@ -85,7 +87,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath) as! UITableViewCell
         
-        cell.textLabel?.text = "\(indexPath.row)"
+        cell.textLabel?.text = "\(indexPath.row + 1)"
         
         var playerimageview = UIImageView (frame: CGRectMake(30, 10, 30, 30))
         playerimageview.userInteractionEnabled = true
@@ -194,17 +196,39 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        let tmp = myPlayerItems[sourceIndexPath.row]
+        let tmp: AnyObject = myPlayerItems[sourceIndexPath.row]
         myPlayerItems.removeObjectAtIndex(sourceIndexPath.row)
         myPlayerItems.insertObject(tmp, atIndex: destinationIndexPath.row)
         
         mytableview.reloadData()
     }
     
+    @IBAction func next()  {
+        if myPlayerItems.count < 11 && myPlayerItems.count > 2 {
+            performSegueWithIdentifier("toyakushoku", sender: nil)
+        } else {
+            let alert = UIAlertController(title: "注意", message: "プレイヤーの数を３以上１０以下にしてください", preferredStyle: .Alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(defaultAction)
+            
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
     
-    //行数表示
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "toyakushoku") {
+            
+            var param: Int = myPlayerItems.count
+            // SecondViewControllerクラスをインスタンス化してsegue（画面遷移）で値を渡せるようにバンドルする
+            var workView : ForthViewController = segue.destinationViewController as! ForthViewController
+            // secondView（バンドルされた変数）に受け取り用の変数を引数とし_paramを渡す（_paramには渡したい値）
+            // この時SecondViewControllerにて受け取る同型の変数を用意しておかないとエラーになる
+            workView.countplayer = param
+        }
+    }
+    
     //選択不可
-    //4つ以上のときのみ削除可能
+    //セル追加後に名前が消える
     
         
 }
