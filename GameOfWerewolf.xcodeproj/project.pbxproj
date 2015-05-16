@@ -18,6 +18,8 @@
 		D797FECD1AB20031005C7CB7 /* GameOfWerewolfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797FECC1AB20031005C7CB7 /* GameOfWerewolfTests.swift */; };
 		D7CA0F6C1B0739E800CBFF96 /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA0F6B1B0739E800CBFF96 /* FifthViewController.swift */; };
 		D7CA0F6E1B073C2D00CBFF96 /* SixthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA0F6D1B073C2D00CBFF96 /* SixthViewController.swift */; };
+		D7CA0F711B07648800CBFF96 /* RolenumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CA0F6F1B07648800CBFF96 /* RolenumberTableViewCell.swift */; };
+		D7CA0F721B07648800CBFF96 /* RolenumberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CA0F701B07648800CBFF96 /* RolenumberTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		D797FECC1AB20031005C7CB7 /* GameOfWerewolfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfWerewolfTests.swift; sourceTree = "<group>"; };
 		D7CA0F6B1B0739E800CBFF96 /* FifthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
 		D7CA0F6D1B073C2D00CBFF96 /* SixthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SixthViewController.swift; sourceTree = "<group>"; };
+		D7CA0F6F1B07648800CBFF96 /* RolenumberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RolenumberTableViewCell.swift; sourceTree = "<group>"; };
+		D7CA0F701B07648800CBFF96 /* RolenumberTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RolenumberTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				D797FEBD1AB20031005C7CB7 /* Images.xcassets */,
 				D797FEBF1AB20031005C7CB7 /* LaunchScreen.xib */,
 				D797FEB41AB20031005C7CB7 /* Supporting Files */,
+				D7CA0F6F1B07648800CBFF96 /* RolenumberTableViewCell.swift */,
+				D7CA0F701B07648800CBFF96 /* RolenumberTableViewCell.xib */,
 			);
 			path = GameOfWerewolf;
 			sourceTree = "<group>";
@@ -209,6 +215,7 @@
 			files = (
 				D797FEBC1AB20031005C7CB7 /* Main.storyboard in Resources */,
 				D797FEC11AB20031005C7CB7 /* LaunchScreen.xib in Resources */,
+				D7CA0F721B07648800CBFF96 /* RolenumberTableViewCell.xib in Resources */,
 				D797FEBE1AB20031005C7CB7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +240,7 @@
 				D797FEB91AB20031005C7CB7 /* ViewController.swift in Sources */,
 				D79560161AB83F0B00016470 /* ThirdViewController.swift in Sources */,
 				D797FEB71AB20031005C7CB7 /* AppDelegate.swift in Sources */,
+				D7CA0F711B07648800CBFF96 /* RolenumberTableViewCell.swift in Sources */,
 				D704E2581AE246BA00D6F5E4 /* ForthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

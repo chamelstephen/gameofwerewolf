@@ -23,6 +23,11 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var werewolfitems: [String] = ["人狼"]
     var citizenitems: [String] = ["村人", "怪盗", "占い師"]
     var teruteruitems: [String] = ["てるてる"]
+    
+    var werewolfnumberitems: NSArray = []
+    var citizennumberitems: NSArray = []
+    var teruterunumberitems: NSArray = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +41,15 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         citizennumber = countplayer - (werewolfnumber + kaitounumber + uranainumber + teruterunumber)
         
-        var werewolfnumberitems = ["\(werewolfnumber)"]
-        var citizennumberitems = ["\(citizennumber)", "\(kaitounumber)", "\(uranainumber)"]
-        var teruterunumberitems = ["\(teruterunumber)"]
+        werewolfnumberitems = ["\(werewolfnumber)"]
+        citizennumberitems = ["\(citizennumber)", "\(kaitounumber)", "\(uranainumber)"]
+        teruterunumberitems = ["\(teruterunumber)"]
         
         println("\(werewolfnumberitems[0])")
         println("\(teruterunumberitems[0])")
+        
+        let xib = UINib(nibName: "RolenumberTableViewCell", bundle: nil)
+        worktableview.registerNib(xib, forCellReuseIdentifier: "WorkCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,14 +89,15 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("WorkCell", forIndexPath: indexPath) as! UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("WorkCell", forIndexPath: indexPath) as! RolenumberTableViewCell
+        
         
         if indexPath.section == 0 {
-            cell.textLabel?.text = "\(werewolfitems[indexPath.row])"
+            cell.roleLabel!.text = "\(werewolfitems[indexPath.row])"
         } else if indexPath.section == 1 {
-            cell.textLabel?.text = "\(citizenitems[indexPath.row])"
+            cell.roleLabel!.text = "\(citizenitems[indexPath.row])"
         } else if indexPath.section == 2 {
-            cell.textLabel?.text = "\(teruteruitems[indexPath.row])"
+            cell.roleLabel!.text = "\(teruteruitems[indexPath.row])"
         }
         
         /*
@@ -121,20 +130,18 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.contentView.addSubview(playerchangestepper)
         */
 
-        /*
-        var workernumberlabel = UILabel(frame: CGRectMake(265, 42.5, 15, 15))
-        if indexPath.section == 0 {
-            workernumberlabel.text = "\(numberitems[indexPath.row])"
-        } else if indexPath.section == 1 && indexPath.row == 0 {
-            workernumberlabel.text = "\(numberitems[indexPath.row])"
-        } else if indexPath.section == 1 && indexPath.row == 1 {
-            workernumberlabel.text = "\(kaitounumber)"
-        } else if indexPath.section == 1 && indexPath.row == 2 {
-            workernumberlabel.text = "\(uranainumber)"
-        } else if indexPath.section == 2 && indexPath.row == 0 {
-            workernumberlabel.text = "\(teruterunumber)"
-        }
         
+        /*var workernumberlabel = UILabel(frame: CGRectMake(265, 42.5, 15, 15))
+        
+        */
+        if indexPath.section == 0 {
+            cell.workernumberlabel!.text = "\(werewolfnumberitems[indexPath.row])"
+        } else if indexPath.section == 1 {
+            cell.workernumberlabel!.text = "\(citizennumberitems[indexPath.row])"
+        } else if indexPath.section == 2 {
+            cell.workernumberlabel!.text = "\(teruterunumberitems[indexPath.row])"
+        }
+        /*
         cell.contentView.addSubview(workernumberlabel)
         */
         
