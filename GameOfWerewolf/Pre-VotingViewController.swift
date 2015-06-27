@@ -9,6 +9,9 @@
 import UIKit
 
 class Pre_VotingViewController: UIViewController {
+    
+    @IBOutlet var faceImage: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,4 +35,28 @@ class Pre_VotingViewController: UIViewController {
     }
     */
 
+    @IBAction func govote() {
+            var checkalert = UIAlertController(title: "プレイヤー確認", message: "あなたは?さんですか？", preferredStyle: .Alert)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: .Cancel, handler: {(action: UIAlertAction!)
+                -> Void in
+                
+                println("キャンセル")
+            })
+            
+            let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction!) -> Void in
+                
+                var targetView = self.storyboard?.instantiateViewControllerWithIdentifier("voting")as! UIViewController
+                targetView.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+                self.presentViewController(targetView, animated: true, completion: nil)
+                
+                
+                println("オッケー")
+            })
+            
+            checkalert.addAction(cancelAction)
+            checkalert.addAction(defaltAction)
+            
+            presentViewController(checkalert, animated: true, completion: nil)
+        }
 }

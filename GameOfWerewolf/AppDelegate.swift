@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     var arraydefault: NSMutableArray = []
+    var playerarray: NSMutableArray = []
     
 
 

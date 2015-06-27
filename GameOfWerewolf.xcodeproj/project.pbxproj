@@ -17,6 +17,10 @@
 		D77DFDE31B3EBB1700361D55 /* DevatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDE21B3EBB1700361D55 /* DevatingViewController.swift */; };
 		D77DFDE51B3EBB8700361D55 /* FinishDevateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDE41B3EBB8700361D55 /* FinishDevateViewController.swift */; };
 		D77DFDE71B3EBCCD00361D55 /* Pre-VotingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDE61B3EBCCD00361D55 /* Pre-VotingViewController.swift */; };
+		D77DFDEB1B3EC00800361D55 /* VotingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDEA1B3EC00800361D55 /* VotingTableViewController.swift */; };
+		D77DFDED1B3EC11700361D55 /* PunishingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDEC1B3EC11700361D55 /* PunishingViewController.swift */; };
+		D77DFDEF1B3EC1B500361D55 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDEE1B3EC1B500361D55 /* ResultTableViewController.swift */; };
+		D77DFDF11B3EC1D300361D55 /* TotalResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDF01B3EC1D300361D55 /* TotalResultTableViewController.swift */; };
 		D79560141AB2FC2D00016470 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79560131AB2FC2D00016470 /* SecondViewController.swift */; };
 		D79560161AB83F0B00016470 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79560151AB83F0B00016470 /* ThirdViewController.swift */; };
 		D797FEB71AB20031005C7CB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D797FEB61AB20031005C7CB7 /* AppDelegate.swift */; };
@@ -52,6 +56,10 @@
 		D77DFDE21B3EBB1700361D55 /* DevatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevatingViewController.swift; sourceTree = "<group>"; };
 		D77DFDE41B3EBB8700361D55 /* FinishDevateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishDevateViewController.swift; sourceTree = "<group>"; };
 		D77DFDE61B3EBCCD00361D55 /* Pre-VotingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pre-VotingViewController.swift"; sourceTree = "<group>"; };
+		D77DFDEA1B3EC00800361D55 /* VotingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingTableViewController.swift; sourceTree = "<group>"; };
+		D77DFDEC1B3EC11700361D55 /* PunishingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunishingViewController.swift; sourceTree = "<group>"; };
+		D77DFDEE1B3EC1B500361D55 /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
+		D77DFDF01B3EC1D300361D55 /* TotalResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalResultTableViewController.swift; sourceTree = "<group>"; };
 		D79560131AB2FC2D00016470 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D79560151AB83F0B00016470 /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		D797FEB11AB20031005C7CB7 /* GameOfWerewolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfWerewolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +131,10 @@
 				D77DFDE21B3EBB1700361D55 /* DevatingViewController.swift */,
 				D77DFDE41B3EBB8700361D55 /* FinishDevateViewController.swift */,
 				D77DFDE61B3EBCCD00361D55 /* Pre-VotingViewController.swift */,
+				D77DFDEA1B3EC00800361D55 /* VotingTableViewController.swift */,
+				D77DFDEC1B3EC11700361D55 /* PunishingViewController.swift */,
+				D77DFDEE1B3EC1B500361D55 /* ResultTableViewController.swift */,
+				D77DFDF01B3EC1D300361D55 /* TotalResultTableViewController.swift */,
 				D797FEBA1AB20031005C7CB7 /* Main.storyboard */,
 				D797FEBD1AB20031005C7CB7 /* Images.xcassets */,
 				D797FEBF1AB20031005C7CB7 /* LaunchScreen.xib */,
@@ -272,12 +284,16 @@
 				D79560141AB2FC2D00016470 /* SecondViewController.swift in Sources */,
 				D77DFDE51B3EBB8700361D55 /* FinishDevateViewController.swift in Sources */,
 				D797FEB91AB20031005C7CB7 /* ViewController.swift in Sources */,
+				D77DFDF11B3EC1D300361D55 /* TotalResultTableViewController.swift in Sources */,
 				D77DFDD91B3E7D0100361D55 /* SeventhViewController.swift in Sources */,
+				D77DFDED1B3EC11700361D55 /* PunishingViewController.swift in Sources */,
 				D79560161AB83F0B00016470 /* ThirdViewController.swift in Sources */,
+				D77DFDEB1B3EC00800361D55 /* VotingTableViewController.swift in Sources */,
 				D797FEB71AB20031005C7CB7 /* AppDelegate.swift in Sources */,
 				D7178D341B19CD9900DC3260 /* PlayerItemsTableViewCell.swift in Sources */,
 				D7CA0F711B07648800CBFF96 /* RolenumberTableViewCell.swift in Sources */,
 				D704E2581AE246BA00D6F5E4 /* ForthViewController.swift in Sources */,
+				D77DFDEF1B3EC1B500361D55 /* ResultTableViewController.swift in Sources */,
 				D77DFDDF1B3EB6D700361D55 /* Pre-devatingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

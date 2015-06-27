@@ -226,6 +226,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if (segue.identifier == "toyakushoku") {
             
             appdelegate.arraydefault = myPlayerItems
+            appdelegate.playerarray = myPlayerItems
             
             println("プレイヤー人数:\(myPlayerItems.count)")
             
