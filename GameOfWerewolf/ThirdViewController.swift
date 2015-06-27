@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
+class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet var mytableview : UITableView!
     @IBOutlet var playerset : UIButton!
@@ -18,6 +18,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // Sectionで使用する配列を定義する.
     var myPlayerSections: [String] = ["Players"]
+    
+    var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +36,17 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var width: CGFloat = self.view.bounds.width
         var height: CGFloat = self.view.bounds.height
         
+        /*
+        
         println("myPlayerSections:\(myPlayerSections)")
         
         println("\(myPlayerSections.count)")
+*/
+        
+        println("プレイヤー人数:\(myPlayerItems.count)")
+        
+        let playerxib = UINib(nibName: "PlayerItemsTableViewCell", bundle: nil)
+        mytableview.registerNib(playerxib, forCellReuseIdentifier: "MyCell")
     }
     
 
@@ -85,38 +95,34 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     Cellに値を設定する.
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath) as! UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath) as! PlayerItemsTableViewCell
         
-        cell.textLabel?.text = "\(indexPath.row + 1)"
+        cell.RowNumberLabel?.text = "\(indexPath.row+1)"
         
-        var playerimageview = UIImageView (frame: CGRectMake(30, 10, 30, 30))
-        playerimageview.userInteractionEnabled = true
-        var playerimagetap = UITapGestureRecognizer (target: self, action: "imagetaped:")
-        playerimageview.addGestureRecognizer(playerimagetap)
         
-        cell.contentView.addSubview(playerimageview)
+        cell.NameTextField!.delegate = self
+        cell.NameTextField!.borderStyle = UITextBorderStyle.RoundedRect
+        cell.NameTextField!.returnKeyType = UIReturnKeyType.Done
+        cell.NameTextField!.text = "プレイヤー\(indexPath.row+1)"
+        cell.NameTextField!.layer.borderColor = UIColor.blackColor().CGColor
         
-        var nametextfield = UITextField (frame: CGRectMake(60, 10, 180, 30 ))
-        nametextfield.delegate = self
-        nametextfield.borderStyle = UITextBorderStyle.RoundedRect
-        nametextfield.returnKeyType = UIReturnKeyType.Done
-        nametextfield.placeholder = "\(myPlayerItems[indexPath.row])"
-        
-        cell.contentView.addSubview(nametextfield)
+        cell.PlayerImageView.userInteractionEnabled = true
+        var PlayerImagetap = UITapGestureRecognizer (target: self, action: "imagetaped:")
+        cell.PlayerImageView.addGestureRecognizer(PlayerImagetap)
         
         return cell
         
-    }
-    
-    func imagetaped(sender: UITapGestureRecognizer) {
-        //写真に接続
-        println("写真に接続")
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
         
+    }
+    
+    func imagetaped(sender: UITapGestureRecognizer) {
+        //写真に接続
+        println("写真に接続")
     }
     
     /*
@@ -147,6 +153,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         println("追加")
         
         // myItemsに追加.
+        
         myPlayerItems.addObject("プレイヤー")
         
         // TableViewを再読み込み.
@@ -217,6 +224,10 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "toyakushoku") {
+            
+            appdelegate.arraydefault = myPlayerItems
+            
+            println("プレイヤー人数:\(myPlayerItems.count)")
             
             var param: Int = myPlayerItems.count
             // SecondViewControllerクラスをインスタンス化してsegue（画面遷移）で値を渡せるようにバンドルする

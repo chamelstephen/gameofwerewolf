@@ -1,21 +1,23 @@
 //
-//  RolenumberTableViewCell.swift
+//  PlayerItemsTableViewCell.swift
 //  GameOfWerewolf
 //
-//  Created by kento on 2015/05/16.
+//  Created by kento on 2015/05/30.
 //  Copyright (c) 2015年 Kento Ohara. All rights reserved.
 //
 
 import UIKit
 
-class RolenumberTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var roleLabel: UILabel!
-    @IBOutlet weak var workernumberlabel: UILabel!
+class PlayerItemsTableViewCell: UITableViewCell, UITextFieldDelegate {
+    
+    @IBOutlet weak var NameTextField: UITextField!
+    @IBOutlet weak var PlayerImageView: UIImageView!
+    @IBOutlet weak var RowNumberLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

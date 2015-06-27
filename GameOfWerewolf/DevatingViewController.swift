@@ -1,28 +1,19 @@
 //
-//  FifthViewController.swift
+//  DevatingViewController.swift
 //  GameOfWerewolf
 //
-//  Created by kento on 2015/05/16.
+//  Created by kento on 2015/06/27.
 //  Copyright (c) 2015年 Kento Ohara. All rights reserved.
 //
 
 import UIKit
 
-class FifthViewController: UIViewController {
-    
-    var nameArray: NSMutableArray = []
-    
-    var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+class DevatingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        nameArray = appdelegate.arraydefault
-        
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,4 +32,8 @@ class FifthViewController: UIViewController {
     }
     */
 
+    @IBAction func finish() {
+        var targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "finishdevating" ) as! UIViewController
+        self.presentViewController( targetView, animated: true, completion: nil)
+    }
 }

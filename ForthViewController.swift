@@ -48,8 +48,8 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         println("\(werewolfnumberitems[0])")
         println("\(teruterunumberitems[0])")
         
-        let xib = UINib(nibName: "RolenumberTableViewCell", bundle: nil)
-        worktableview.registerNib(xib, forCellReuseIdentifier: "WorkCell")
+        let rolexib = UINib(nibName: "RolenumberTableViewCell", bundle: nil)
+        worktableview.registerNib(rolexib, forCellReuseIdentifier: "WorkCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,40 +100,7 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.roleLabel!.text = "\(teruteruitems[indexPath.row])"
         }
         
-        /*
-        var playerchangestepper = UIStepper(target: self, action:"stepperchanged:")
-        playerchangestepper.center = CGPointMake(280, 10)
         
-        playerchangestepper.stepValue = 1
-        if cell.textLabel?.text == "人狼" {
-            playerchangestepper.minimumValue = 1
-            playerchangestepper.maximumValue = 5
-            playerchangestepper.value = 2
-        } else if cell.textLabel?.text == "村人" {
-            playerchangestepper.minimumValue = 0
-            playerchangestepper.maximumValue = 10
-            playerchangestepper.value = 1
-        } else if cell.textLabel?.text == "怪盗" {
-            playerchangestepper.minimumValue = 0
-            playerchangestepper.maximumValue = 1
-            playerchangestepper.value = 1
-        } else if cell.textLabel?.text == "占い師" {
-            playerchangestepper.minimumValue = 0
-            playerchangestepper.maximumValue = 10
-            playerchangestepper.value = 1
-        } else if cell.textLabel?.text == "てるてる" {
-            playerchangestepper.minimumValue = 0
-            playerchangestepper.maximumValue = 1
-            playerchangestepper.value = 0
-        }
-        
-        cell.contentView.addSubview(playerchangestepper)
-        */
-
-        
-        /*var workernumberlabel = UILabel(frame: CGRectMake(265, 42.5, 15, 15))
-        
-        */
         if indexPath.section == 0 {
             cell.workernumberlabel!.text = "\(werewolfnumberitems[indexPath.row])"
         } else if indexPath.section == 1 {
@@ -141,28 +108,9 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else if indexPath.section == 2 {
             cell.workernumberlabel!.text = "\(teruterunumberitems[indexPath.row])"
         }
-        /*
-        cell.contentView.addSubview(workernumberlabel)
-        */
         
         return cell
     }
     
-    func stepperchanged(sender: UIStepper) {
-        /*
-        if cell.textLabel?.text == "人狼" {
-            werewolfnumber = werewolfnumber + 1
-            workernumberlabel.text = "\(werewolfnumber)"
-        } else if cell.textLabel?.text == "村人" {
-            workernumberlabel.text = "\(citizennumber)"
-        } else if cell.textLabel?.text == "怪盗" {
-            workernumberlabel.text = "\(kaitounumber)"
-        } else if cell.textLabel?.text == "占い師" {
-            workernumberlabel.text = "\(uranainumber)"
-        } else if cell.textLabel?.text == "てるてる" {
-            workernumberlabel.text = "\(teruterunumber)"
-        }
-*/
-    }
-
+    
 }

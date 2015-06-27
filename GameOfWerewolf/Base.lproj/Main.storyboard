@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -283,7 +283,7 @@
                                 <rect key="frame" x="0.0" y="30" width="320" height="355"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyCell" rowHeight="55" id="TXM-hF-Nw0">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyCell" rowHeight="55" id="TXM-hF-Nw0" customClass="PlayerItemsTableViewCell" customModule="GameOfWerewolf" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TXM-hF-Nw0" id="dtO-eI-HMz">
@@ -311,7 +311,7 @@
         <!--Sixth View Controller-->
         <scene sceneID="Sxg-eC-DzC">
             <objects>
-                <viewController id="NNE-7M-98W" customClass="SixthViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="roleprecheck" id="NNE-7M-98W" customClass="SixthViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dQI-ko-MD7"/>
                         <viewControllerLayoutGuide type="bottom" id="DpM-Nj-dfz"/>
@@ -326,33 +326,43 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="aIf-sZ-58P" kind="showDetail" id="ew6-ve-plB"/>
+                                    <action selector="playercheck" destination="NNE-7M-98W" eventType="touchUpInside" id="Iyb-Zs-C18"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wE-x4-mI8">
+                                <rect key="frame" x="16" y="102" width="288" height="270"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="このプレイヤーに端末を渡してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hq6-3V-ys4">
-                                <rect key="frame" x="0.0" y="64" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wE-x4-mI8">
-                                <rect key="frame" x="16" y="102" width="288" height="270"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tv-cd-xdq">
+                                <rect key="frame" x="35" y="64" width="250" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="mgh-RF-Td5"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="faceImageView" destination="2wE-x4-mI8" id="ifN-nN-BbJ"/>
+                        <outlet property="nameLabelView" destination="9tv-cd-xdq" id="VdX-na-KUm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uMk-tv-O9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2511" y="282"/>
+            <point key="canvasLocation" x="2514" y="282"/>
         </scene>
-        <!--View Controller-->
+        <!--Seventh View Controller-->
         <scene sceneID="vDW-Z7-h8a">
             <objects>
-                <viewController id="aIf-sZ-58P" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rolecheck" id="aIf-sZ-58P" customClass="SeventhViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y4G-Pi-371"/>
                         <viewControllerLayoutGuide type="bottom" id="2zY-og-Fwb"/>
@@ -373,19 +383,30 @@
                                     <segue destination="1PA-sB-jSW" kind="show" id="yEn-gu-e4b"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FP-hf-IL2">
+                                <rect key="frame" x="43" y="64" width="250" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="bxR-85-uTL"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="faceView" destination="QGE-VL-Mdp" id="qVv-Cq-3BS"/>
+                        <outlet property="rolelabel" destination="5FP-hf-IL2" id="hw7-Bd-ABv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7XR-Va-vMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2894" y="282"/>
         </scene>
-        <!--View Controller-->
+        <!--Eighth View Controller-->
         <scene sceneID="lvH-Eh-TsJ">
             <objects>
-                <viewController id="1PA-sB-jSW" sceneMemberID="viewController">
+                <viewController id="1PA-sB-jSW" customClass="EighthViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H09-l6-G3S"/>
                         <viewControllerLayoutGuide type="bottom" id="zyf-7E-nFG"/>
@@ -408,7 +429,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JVH-Q8-LmP" kind="show" id="hZm-2e-An9"/>
+                                    <action selector="next" destination="1PA-sB-jSW" eventType="touchUpInside" id="aQ1-hO-J5Z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -416,15 +437,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="arR-Ju-Pdm"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="roletext" destination="oZK-uN-aex" id="mOr-Dr-elV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygy-Id-Ogy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3281" y="282"/>
         </scene>
-        <!--View Controller-->
+        <!--Good Morning View Controller-->
         <scene sceneID="N5t-w9-l3d">
             <objects>
-                <viewController id="JVH-Q8-LmP" sceneMemberID="viewController">
+                <viewController id="JVH-Q8-LmP" customClass="GoodMorningViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vdO-9s-JNZ"/>
                         <viewControllerLayoutGuide type="bottom" id="McV-ZR-E97"/>
@@ -432,13 +456,206 @@
                     <view key="view" contentMode="scaleToFill" id="yK2-Tl-iI5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NE-gM-JEd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="A8d-Sv-nG1" kind="push" id="aQ7-q9-68E"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="夜が明けました" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVb-GF-EZl">
+                                <rect key="frame" x="101" y="225" width="119" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.2369874448" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                     </view>
+                    <navigationItem key="navigationItem" id="CxL-rA-cvc"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xvu-Du-tHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3673" y="282"/>
+        </scene>
+        <!--Pre devating View Controller-->
+        <scene sceneID="trM-Em-zCP">
+            <objects>
+                <viewController id="A8d-Sv-nG1" customClass="Pre_devatingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pOl-Sc-x5A"/>
+                        <viewControllerLayoutGuide type="bottom" id="WaJ-DO-OD9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jLa-c5-5Kl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="話し合いを開始します" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crb-Ez-3eb">
+                                <rect key="frame" x="0.0" y="20" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmQ-cM-O83">
+                                <rect key="frame" x="0.0" y="225" width="320" height="30"/>
+                                <color key="backgroundColor" red="0.2369874448" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="話し合いを開始する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="SX3-T9-LoW" kind="push" id="q1G-3h-2YX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="A5e-zx-fJf"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="At7-QW-EUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4079" y="282"/>
+        </scene>
+        <!--Devating View Controller-->
+        <scene sceneID="lth-eD-8aC">
+            <objects>
+                <viewController id="SX3-T9-LoW" customClass="DevatingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Elm-Il-b35"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pla-BV-L15"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uzG-jR-jL4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="話し合いをしてください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9h-FM-Sex">
+                                <rect key="frame" x="0.0" y="20" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pnr-sF-XFv">
+                                <rect key="frame" x="0.0" y="450" width="320" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.086181215749999998" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="話し合いを終了する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="finish" destination="SX3-T9-LoW" eventType="touchUpInside" id="whx-O7-thG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eBf-WH-fP6"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B6s-bO-oHo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4503" y="282"/>
+        </scene>
+        <!--Pre Voting View Controller-->
+        <scene sceneID="MmJ-w8-o1t">
+            <objects>
+                <viewController id="ghM-ag-Svp" customClass="Pre_VotingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KQg-Ay-Uui"/>
+                        <viewControllerLayoutGuide type="bottom" id="YGl-bf-KZJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pgc-qD-LWM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2X-2w-q3y">
+                                <rect key="frame" x="16" y="102" width="288" height="270"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mCd-GR-4it"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oWI-cB-305" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5293" y="282"/>
+        </scene>
+        <!--Finish Devate View Controller-->
+        <scene sceneID="lls-wo-Dcw">
+            <objects>
+                <viewController id="nee-cc-Dzt" customClass="FinishDevateViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C7k-Yo-Fru"/>
+                        <viewControllerLayoutGuide type="bottom" id="7WT-SD-Q6c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j5E-Un-h0X">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fB1-iP-vUz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ghM-ag-Svp" kind="push" id="Gd5-2R-iGD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cK8-aw-ecz">
+                                <rect key="frame" x="100" y="225" width="120" height="30"/>
+                                <state key="normal" title="処刑のお時間です">
+                                    <color key="titleColor" red="1" green="0.2292549599" blue="0.1022405143" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ghi-dB-lzH"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bII-EI-eOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4877" y="282"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6qg-ap-daT">
+            <objects>
+                <navigationController storyboardIdentifier="finishdevating" id="fB7-To-N2C" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hpp-8b-3pc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nee-cc-Dzt" kind="relationship" relationship="rootViewController" id="Twd-V8-mtC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRC-9M-JS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4503" y="827"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AHz-1l-7om">
+            <objects>
+                <navigationController storyboardIdentifier="gamestart" id="8F1-T6-RAJ" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ne2-Fa-Ago">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JVH-Q8-LmP" kind="relationship" relationship="rootViewController" id="7A2-bo-ERq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tuT-VG-wWw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3281" y="827"/>
         </scene>
         <!--Fifth View Controller-->
         <scene sceneID="zo5-pc-hC3">
@@ -452,6 +669,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="恐ろしい夜が訪れました" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBg-on-Hz0">
+                                <rect key="frame" x="67" y="225" width="187" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.2292549599" blue="0.1022405143" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPI-mW-czm">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <state key="normal">
@@ -461,14 +684,8 @@
                                     <segue destination="NNE-7M-98W" kind="push" id="JE3-mm-HFa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="恐ろしい夜が訪れました" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBg-on-Hz0">
-                                <rect key="frame" x="67" y="229" width="187" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.2292549599" blue="0.1022405143" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="77S-m5-gxO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

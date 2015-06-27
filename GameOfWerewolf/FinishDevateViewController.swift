@@ -1,26 +1,19 @@
 //
-//  FifthViewController.swift
+//  FinishDevateViewController.swift
 //  GameOfWerewolf
 //
-//  Created by kento on 2015/05/16.
+//  Created by kento on 2015/06/27.
 //  Copyright (c) 2015年 Kento Ohara. All rights reserved.
 //
 
 import UIKit
 
-class FifthViewController: UIViewController {
-    
-    var nameArray: NSMutableArray = []
-    
-    var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+class FinishDevateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        nameArray = appdelegate.arraydefault
-        
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }

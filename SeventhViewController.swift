@@ -1,16 +1,18 @@
 //
-//  FifthViewController.swift
+//  SeventhViewController.swift
 //  GameOfWerewolf
 //
-//  Created by kento on 2015/05/16.
+//  Created by kento on 2015/06/27.
 //  Copyright (c) 2015年 Kento Ohara. All rights reserved.
 //
 
 import UIKit
 
-class FifthViewController: UIViewController {
+class SeventhViewController: UIViewController {
     
-    var nameArray: NSMutableArray = []
+    @IBOutlet var rolelabel: UILabel!
+    @IBOutlet var faceView: UIImageView!
+    
     
     var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -19,10 +21,9 @@ class FifthViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        nameArray = appdelegate.arraydefault
         
+        rolelabel.text = "あなたは人狼です"
         
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
