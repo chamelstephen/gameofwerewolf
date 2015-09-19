@@ -12,11 +12,25 @@ class Pre_VotingViewController: UIViewController {
     
     @IBOutlet var faceImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
+    
+    var nameArray: NSMutableArray! = []
+    
+    var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        print("\(appdelegate.playerarray.count)")
+        
+        nameArray = appdelegate.playerarray
+        nameLabel.text = "\(nameArray[0])さん"
+        
+        appdelegate.arraydefault = nameArray
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,22 +50,22 @@ class Pre_VotingViewController: UIViewController {
     */
 
     @IBAction func govote() {
-            var checkalert = UIAlertController(title: "プレイヤー確認", message: "あなたは?さんですか？", preferredStyle: .Alert)
+            var checkalert = UIAlertController(title: "プレイヤー確認", message: "あなたは\(nameLabel.text)ですか？", preferredStyle: .Alert)
             
-            let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: .Cancel, handler: {(action: UIAlertAction!)
+            let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: .Cancel, handler: {(action: UIAlertAction)
                 -> Void in
                 
-                println("キャンセル")
+                print("キャンセル")
             })
             
-            let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction!) -> Void in
+            let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction) -> Void in
                 
                 var targetView = self.storyboard?.instantiateViewControllerWithIdentifier("voting")as! UIViewController
                 targetView.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
                 self.presentViewController(targetView, animated: true, completion: nil)
                 
                 
-                println("オッケー")
+                print("オッケー")
             })
             
             checkalert.addAction(cancelAction)

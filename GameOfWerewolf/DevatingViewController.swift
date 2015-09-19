@@ -33,7 +33,7 @@ class DevatingViewController: UIViewController {
     */
 
     @IBAction func finish() {
-        var targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "finishdevating" ) as! UIViewController
+        let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "finishdevating" ) 
         self.presentViewController( targetView, animated: true, completion: nil)
     }
 }

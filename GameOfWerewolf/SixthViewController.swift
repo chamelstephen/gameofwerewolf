@@ -25,7 +25,7 @@ class SixthViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         playername = appdelegate.arraydefault[0] as! NSString
-        println("プレイヤー名:\(playername)")
+        print("プレイヤー名:\(playername)")
         
         nameLabelView.text = "\(playername)さん"
     }
@@ -49,20 +49,20 @@ class SixthViewController: UIViewController {
     @IBAction func playercheck() {
         var checkalert = UIAlertController(title: "プレイヤー確認", message: "あなたは\(playername)さんですか？", preferredStyle: .Alert)
         
-        let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: .Cancel, handler: {(action: UIAlertAction!)
+        let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: .Cancel, handler: {(action: UIAlertAction)
             -> Void in
             
-            println("キャンセル")
+            print("キャンセル")
         })
         
-        let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction!) -> Void in
+        let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction) -> Void in
             
             var targetView = self.storyboard?.instantiateViewControllerWithIdentifier("rolecheck")as! UIViewController
             targetView.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
             self.presentViewController(targetView, animated: true, completion: nil)
             
             
-            println("オッケー")
+            print("オッケー")
         })
         
         checkalert.addAction(cancelAction)

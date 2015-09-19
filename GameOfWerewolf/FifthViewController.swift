@@ -9,17 +9,11 @@
 import UIKit
 
 class FifthViewController: UIViewController {
-    
-    var nameArray: NSMutableArray = []
-    
-    var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        nameArray = appdelegate.arraydefault
         
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)

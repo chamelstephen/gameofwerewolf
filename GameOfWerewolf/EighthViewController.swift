@@ -20,16 +20,18 @@ class EighthViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
         
         arraydefault = appdelegate.arraydefault
         arraydefault.removeObjectAtIndex(0)
         
+        print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
         
         if arraydefault.count == 0 {
             
         } else {
             appdelegate.arraydefault = arraydefault
-            println("次のプレイヤー:\(arraydefault[0])")
+            print("次のプレイヤー:\(arraydefault[0])")
         }
         
         
@@ -53,11 +55,15 @@ class EighthViewController: UIViewController {
 
     @IBAction func next() {
         if arraydefault.count == 0{
-            var targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" ) as! UIViewController
+            let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" ) 
             self.presentViewController( targetView, animated: true, completion: nil)
+            
+            print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
         } else {
-            var targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" ) as! UIViewController
+            let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" ) 
             self.presentViewController( targetView, animated: true, completion: nil)
+            
+            print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
         }
     }
 }

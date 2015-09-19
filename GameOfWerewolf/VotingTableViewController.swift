@@ -24,6 +24,7 @@ class VotingTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         myPlayerItems = appdelegate.playerarray
+        appdelegate.arraydefault = myPlayerItems
     }
 
     override func didReceiveMemoryWarning() {

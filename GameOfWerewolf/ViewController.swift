@@ -26,27 +26,27 @@ class ViewController: UIViewController {
     }
     
     @IBAction func play(){
-        var playdevicealert = UIAlertController(title: "プレイ方法", message: "一つの端末でプレイしますか？\nそれとも複数の端末でプレイしますか？", preferredStyle: .Alert)
+        let playdevicealert = UIAlertController(title: "プレイ方法", message: "一つの端末でプレイしますか？\nそれとも複数の端末でプレイしますか？", preferredStyle: .Alert)
         
         let defaultAction = UIAlertAction(title: "複数の端末でプレイ", style: .Default) { (action) -> Void in
             
             
             
             
-            println("複数端末でゲームを開始します")
+            print("複数端末でゲームを開始します")
         }
         
         let okAction = UIAlertAction(title: "一つの端末でプレイ", style: .Default) { (action) -> Void in
-            var targetView: AnyObject = self.storyboard!.instantiateViewControllerWithIdentifier( "navigationcontroller" )
+            let targetView: AnyObject = self.storyboard!.instantiateViewControllerWithIdentifier( "navigationcontroller" )
             self.presentViewController( targetView as! UINavigationController, animated: true, completion: nil)
 
             
-            println("単一端末でゲームを開始します")
+            print("単一端末でゲームを開始します")
         }
         
         let myAction_1 = UIAlertAction(title: "Hello", style: UIAlertActionStyle.Default, handler: {
-            (action: UIAlertAction!) in
-            println("Hello")
+            (action: UIAlertAction) in
+            print("Hello")
         })
         
         playdevicealert.addAction(defaultAction)

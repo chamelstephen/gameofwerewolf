@@ -33,7 +33,7 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        println("プレイヤー人数:\(countplayer)")
+        print("プレイヤー人数:\(countplayer)")
         
         worktableview.delegate=self
         worktableview.dataSource=self
@@ -45,8 +45,8 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         citizennumberitems = ["\(citizennumber)", "\(kaitounumber)", "\(uranainumber)"]
         teruterunumberitems = ["\(teruterunumber)"]
         
-        println("\(werewolfnumberitems[0])")
-        println("\(teruterunumberitems[0])")
+        print("\(werewolfnumberitems[0])")
+        print("\(teruterunumberitems[0])")
         
         let rolexib = UINib(nibName: "RolenumberTableViewCell", bundle: nil)
         worktableview.registerNib(rolexib, forCellReuseIdentifier: "WorkCell")
@@ -89,7 +89,7 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("WorkCell", forIndexPath: indexPath) as! RolenumberTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("WorkCell", forIndexPath: indexPath) as! RolenumberTableViewCell
         
         
         if indexPath.section == 0 {

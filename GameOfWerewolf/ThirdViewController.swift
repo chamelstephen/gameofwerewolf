@@ -43,7 +43,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         println("\(myPlayerSections.count)")
 */
         
-        println("プレイヤー人数:\(myPlayerItems.count)")
+        print("プレイヤー人数:\(myPlayerItems.count)")
         
         let playerxib = UINib(nibName: "PlayerItemsTableViewCell", bundle: nil)
         mytableview.registerNib(playerxib, forCellReuseIdentifier: "MyCell")
@@ -95,7 +95,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     Cellに値を設定する.
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath) as! PlayerItemsTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath) as! PlayerItemsTableViewCell
         
         cell.RowNumberLabel?.text = "\(indexPath.row+1)"
         
@@ -105,9 +105,10 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.NameTextField!.returnKeyType = UIReturnKeyType.Done
         cell.NameTextField!.text = "プレイヤー\(indexPath.row+1)"
         cell.NameTextField!.layer.borderColor = UIColor.blackColor().CGColor
+        //文字数制限
         
         cell.PlayerImageView.userInteractionEnabled = true
-        var PlayerImagetap = UITapGestureRecognizer (target: self, action: "imagetaped:")
+        let PlayerImagetap = UITapGestureRecognizer (target: self, action: "imagetaped:")
         cell.PlayerImageView.addGestureRecognizer(PlayerImagetap)
         
         return cell
@@ -122,7 +123,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func imagetaped(sender: UITapGestureRecognizer) {
         //写真に接続
-        println("写真に接続")
+        print("写真に接続")
     }
     
     /*
@@ -136,11 +137,11 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // 編集中のときのみaddButtonをナビゲーションバーの左に表示する
         if editing {
-            println("編集中")
+            print("編集中")
             let addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addCell:")
             self.navigationItem.setLeftBarButtonItem(addButton, animated: true)
         } else {
-            println("通常モード")
+            print("通常モード")
             self.navigationItem.setLeftBarButtonItem(nil, animated: true)
         }
         
@@ -150,7 +151,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     addButtonが押された際呼び出される
     */
     func addCell(sender: AnyObject) {
-        println("追加")
+        print("追加")
         
         // myItemsに追加.
         
@@ -168,7 +169,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // 削除のとき.
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            println("削除")
+            print("削除")
             
             // 指定されたセルのオブジェクトをmyItemsから削除する.
             myPlayerItems.removeObjectAtIndex(indexPath.row)
@@ -178,7 +179,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
         // 削除
         let delete = UITableViewRowAction(style: .Default, title: "削除") {
@@ -228,11 +229,13 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
             appdelegate.arraydefault = myPlayerItems
             appdelegate.playerarray = myPlayerItems
             
-            println("プレイヤー人数:\(myPlayerItems.count)")
+            print("プレイヤー人数:\(myPlayerItems.count)")
+            print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
+            print("appdelegate.arraydefault:\(appdelegate.arraydefault.count)")
             
-            var param: Int = myPlayerItems.count
+            let param: Int = myPlayerItems.count
             // SecondViewControllerクラスをインスタンス化してsegue（画面遷移）で値を渡せるようにバンドルする
-            var workView : ForthViewController = segue.destinationViewController as! ForthViewController
+            let workView : ForthViewController = segue.destinationViewController as! ForthViewController
             // secondView（バンドルされた変数）に受け取り用の変数を引数とし_paramを渡す（_paramには渡したい値）
             // この時SecondViewControllerにて受け取る同型の変数を用意しておかないとエラーになる
             workView.countplayer = param

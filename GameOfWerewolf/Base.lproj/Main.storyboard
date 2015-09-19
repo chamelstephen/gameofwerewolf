@@ -580,7 +580,7 @@
         <!--Pre Voting View Controller-->
         <scene sceneID="MmJ-w8-o1t">
             <objects>
-                <viewController id="ghM-ag-Svp" customClass="Pre_VotingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="prevoting" id="ghM-ag-Svp" customClass="Pre_VotingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KQg-Ay-Uui"/>
                         <viewControllerLayoutGuide type="bottom" id="YGl-bf-KZJ"/>
@@ -624,7 +624,7 @@
         <!--Navigation Controller-->
         <scene sceneID="W0F-kF-MC7">
             <objects>
-                <navigationController id="Js9-Pa-LLD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="gopunishing" id="Js9-Pa-LLD" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hRS-K8-wwx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -664,12 +664,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egb-2b-V4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5365" y="717"/>
+            <point key="canvasLocation" x="5361" y="921"/>
         </scene>
-        <!--View Controller-->
+        <!--Voting View Controller-->
         <scene sceneID="d8S-14-0qq">
             <objects>
-                <viewController id="eor-e1-lYk" sceneMemberID="viewController">
+                <viewController id="eor-e1-lYk" customClass="VotingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="23V-P8-fVQ"/>
                         <viewControllerLayoutGuide type="bottom" id="MAV-Do-tOu"/>
@@ -678,14 +678,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FK3-4R-1JY">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MnG-ff-rEN">
-                                <rect key="frame" x="0.0" y="31" width="320" height="385"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="DOz-N6-xa7">
@@ -697,12 +691,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="処刑したい人に投票してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FK3-4R-1JY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="wLu-8J-cDj"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="votingplayertable" destination="MnG-ff-rEN" id="LzZ-5f-QBY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPz-3F-OPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
