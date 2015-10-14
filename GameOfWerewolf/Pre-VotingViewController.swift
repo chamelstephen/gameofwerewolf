@@ -13,9 +13,12 @@ class Pre_VotingViewController: UIViewController {
     @IBOutlet var faceImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     
-    var nameArray: NSMutableArray! = []
+    let playerData2 = NSUserDefaults.standardUserDefaults()
+    var nameArray: [String] = []
     
-    var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    let appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
 
 
     override func viewDidLoad() {
@@ -23,13 +26,16 @@ class Pre_VotingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        print("\(appdelegate.playerarray.count)")
+        nameArray = appdelegate.voterarray
         
-        nameArray = appdelegate.playerarray
+        if nameArray.count == 0{
+            nameArray = playerData2.arrayForKey("player")! as! [String]
+        }
+        
+        print("nameArray==>>\(nameArray)")
+        print("nameArrray[0]==>>\(nameArray[0])")
+        
         nameLabel.text = "\(nameArray[0])さん"
-        
-        appdelegate.arraydefault = nameArray
-        
         
     }
 
@@ -50,7 +56,7 @@ class Pre_VotingViewController: UIViewController {
     */
 
     @IBAction func govote() {
-            var checkalert = UIAlertController(title: "プレイヤー確認", message: "あなたは\(nameLabel.text)ですか？", preferredStyle: .Alert)
+            let checkalert = UIAlertController(title: "プレイヤー確認", message: "あなたは\(nameArray[0])ですか？", preferredStyle: .Alert)
             
             let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: .Cancel, handler: {(action: UIAlertAction)
                 -> Void in
@@ -60,9 +66,12 @@ class Pre_VotingViewController: UIViewController {
             
             let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction) -> Void in
                 
-                var targetView = self.storyboard?.instantiateViewControllerWithIdentifier("voting")as! UIViewController
-                targetView.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-                self.presentViewController(targetView, animated: true, completion: nil)
+                self.nameArray.removeAtIndex(0)
+                self.appdelegate.voterarray = self.nameArray
+                
+                let targetView = self.storyboard?.instantiateViewControllerWithIdentifier("voting")
+                targetView!.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+                self.presentViewController(targetView!, animated: true, completion: nil)
                 
                 
                 print("オッケー")

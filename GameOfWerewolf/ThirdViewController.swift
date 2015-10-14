@@ -19,7 +19,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // Sectionで使用する配列を定義する.
     var myPlayerSections: [String] = ["Players"]
     
-    var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +36,13 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var width: CGFloat = self.view.bounds.width
         var height: CGFloat = self.view.bounds.height
         
-        /*
-        
-        println("myPlayerSections:\(myPlayerSections)")
-        
-        println("\(myPlayerSections.count)")
-*/
-        
         print("プレイヤー人数:\(myPlayerItems.count)")
         
         let playerxib = UINib(nibName: "PlayerItemsTableViewCell", bundle: nil)
         mytableview.registerNib(playerxib, forCellReuseIdentifier: "MyCell")
+        
+        let playerdata = NSUserDefaults.standardUserDefaults()
+        
     }
     
 
@@ -212,6 +208,18 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func next()  {
+        appdelegate.arraydefault = myPlayerItems
+        appdelegate.playerarray = myPlayerItems
+        
+        print("プレイヤー人数:\(myPlayerItems.count)")
+        
+        print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
+        print("appdelegate.arraydefault:\(appdelegate.arraydefault.count)")
+        
+        let playerData = NSUserDefaults.standardUserDefaults()
+        playerData.setObject( (myPlayerItems), forKey: "player")
+        
+        
         if myPlayerItems.count < 11 && myPlayerItems.count > 2 {
             performSegueWithIdentifier("toyakushoku", sender: nil)
         } else {
@@ -226,19 +234,12 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "toyakushoku") {
             
-            appdelegate.arraydefault = myPlayerItems
-            appdelegate.playerarray = myPlayerItems
-            
-            print("プレイヤー人数:\(myPlayerItems.count)")
-            print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
-            print("appdelegate.arraydefault:\(appdelegate.arraydefault.count)")
-            
-            let param: Int = myPlayerItems.count
+           // let param: Int =
             // SecondViewControllerクラスをインスタンス化してsegue（画面遷移）で値を渡せるようにバンドルする
             let workView : ForthViewController = segue.destinationViewController as! ForthViewController
             // secondView（バンドルされた変数）に受け取り用の変数を引数とし_paramを渡す（_paramには渡したい値）
             // この時SecondViewControllerにて受け取る同型の変数を用意しておかないとエラーになる
-            workView.countplayer = param
+            workView.countplayer = myPlayerItems.count
         }
     }
     

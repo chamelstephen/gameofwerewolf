@@ -44,7 +44,7 @@ class ViewController: UIViewController {
             print("単一端末でゲームを開始します")
         }
         
-        let myAction_1 = UIAlertAction(title: "Hello", style: UIAlertActionStyle.Default, handler: {
+        _ = UIAlertAction(title: "Hello", style: UIAlertActionStyle.Default, handler: {
             (action: UIAlertAction) in
             print("Hello")
         })

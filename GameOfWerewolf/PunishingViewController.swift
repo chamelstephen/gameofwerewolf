@@ -9,11 +9,28 @@
 import UIKit
 
 class PunishingViewController: UIViewController {
+    
+    var votedDataArray = [String]()
+    
+    let saveVotedData = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        if saveVotedData.arrayForKey("votedData") == nil {
+            
+            print("fale")
+            
+        } else {
+            
+            votedDataArray = saveVotedData.arrayForKey("votedData") as! [String]
+            print("votedDataArray == \(votedDataArray)")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

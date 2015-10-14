@@ -47,7 +47,7 @@ class SixthViewController: UIViewController {
     */
     
     @IBAction func playercheck() {
-        var checkalert = UIAlertController(title: "プレイヤー確認", message: "あなたは\(playername)さんですか？", preferredStyle: .Alert)
+        let checkalert = UIAlertController(title: "プレイヤー確認", message: "あなたは\(playername)さんですか？", preferredStyle: .Alert)
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: .Cancel, handler: {(action: UIAlertAction)
             -> Void in
@@ -57,9 +57,9 @@ class SixthViewController: UIViewController {
         
         let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction) -> Void in
             
-            var targetView = self.storyboard?.instantiateViewControllerWithIdentifier("rolecheck")as! UIViewController
-            targetView.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-            self.presentViewController(targetView, animated: true, completion: nil)
+            let targetView = self.storyboard?.instantiateViewControllerWithIdentifier("rolecheck")
+            targetView!.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+            self.presentViewController(targetView!, animated: true, completion: nil)
             
             
             print("オッケー")

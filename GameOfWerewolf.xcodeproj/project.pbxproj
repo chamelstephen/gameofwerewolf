@@ -10,6 +10,11 @@
 		D704E2581AE246BA00D6F5E4 /* ForthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D704E2571AE246BA00D6F5E4 /* ForthViewController.swift */; };
 		D7178D341B19CD9900DC3260 /* PlayerItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7178D321B19CD9900DC3260 /* PlayerItemsTableViewCell.swift */; };
 		D7178D351B19CD9900DC3260 /* PlayerItemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7178D331B19CD9900DC3260 /* PlayerItemsTableViewCell.xib */; };
+		D71808101BAD7CE600A43E0E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D718080D1BAD7CE600A43E0E /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D71808111BAD7CE600A43E0E /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D718080E1BAD7CE600A43E0E /* Default-667h@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D71808121BAD7CE600A43E0E /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D718080F1BAD7CE600A43E0E /* Default-736h@3x.png */; settings = {ASSET_TAGS = (); }; };
+		D71808151BAD7DD500A43E0E /* Main4.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D71808131BAD7DD500A43E0E /* Main4.storyboard */; settings = {ASSET_TAGS = (); }; };
+		D71808171BCE74BE00A43E0E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D71808161BCE74BE00A43E0E /* icon.png */; settings = {ASSET_TAGS = (); }; };
 		D77DFDD91B3E7D0100361D55 /* SeventhViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDD81B3E7D0100361D55 /* SeventhViewController.swift */; };
 		D77DFDDB1B3E9A7100361D55 /* EighthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDDA1B3E9A7100361D55 /* EighthViewController.swift */; };
 		D77DFDDF1B3EB6D700361D55 /* Pre-devatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDDE1B3EB6D700361D55 /* Pre-devatingViewController.swift */; };
@@ -17,10 +22,7 @@
 		D77DFDE31B3EBB1700361D55 /* DevatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDE21B3EBB1700361D55 /* DevatingViewController.swift */; };
 		D77DFDE51B3EBB8700361D55 /* FinishDevateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDE41B3EBB8700361D55 /* FinishDevateViewController.swift */; };
 		D77DFDE71B3EBCCD00361D55 /* Pre-VotingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDE61B3EBCCD00361D55 /* Pre-VotingViewController.swift */; };
-		D77DFDEB1B3EC00800361D55 /* VotingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDEA1B3EC00800361D55 /* VotingTableViewController.swift */; };
 		D77DFDED1B3EC11700361D55 /* PunishingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDEC1B3EC11700361D55 /* PunishingViewController.swift */; };
-		D77DFDEF1B3EC1B500361D55 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDEE1B3EC1B500361D55 /* ResultTableViewController.swift */; };
-		D77DFDF11B3EC1D300361D55 /* TotalResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDF01B3EC1D300361D55 /* TotalResultTableViewController.swift */; };
 		D77DFDF31B3ECD0A00361D55 /* VotingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDF21B3ECD0A00361D55 /* VotingViewController.swift */; };
 		D77DFDF81B3ECE9300361D55 /* VotingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDF61B3ECE9300361D55 /* VotingTableViewCell.swift */; };
 		D77DFDF91B3ECE9300361D55 /* VotingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D77DFDF71B3ECE9300361D55 /* VotingTableViewCell.xib */; };
@@ -52,6 +54,11 @@
 		D704E2571AE246BA00D6F5E4 /* ForthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForthViewController.swift; path = ../ForthViewController.swift; sourceTree = "<group>"; };
 		D7178D321B19CD9900DC3260 /* PlayerItemsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerItemsTableViewCell.swift; sourceTree = "<group>"; };
 		D7178D331B19CD9900DC3260 /* PlayerItemsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerItemsTableViewCell.xib; sourceTree = "<group>"; };
+		D718080D1BAD7CE600A43E0E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D718080E1BAD7CE600A43E0E /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
+		D718080F1BAD7CE600A43E0E /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
+		D71808141BAD7DD500A43E0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main4.storyboard; sourceTree = "<group>"; };
+		D71808161BCE74BE00A43E0E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = GameOfWerewolf/icon.png; sourceTree = "<group>"; };
 		D77DFDD81B3E7D0100361D55 /* SeventhViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeventhViewController.swift; path = ../SeventhViewController.swift; sourceTree = "<group>"; };
 		D77DFDDA1B3E9A7100361D55 /* EighthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EighthViewController.swift; sourceTree = "<group>"; };
 		D77DFDDE1B3EB6D700361D55 /* Pre-devatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pre-devatingViewController.swift"; sourceTree = "<group>"; };
@@ -59,10 +66,7 @@
 		D77DFDE21B3EBB1700361D55 /* DevatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevatingViewController.swift; sourceTree = "<group>"; };
 		D77DFDE41B3EBB8700361D55 /* FinishDevateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishDevateViewController.swift; sourceTree = "<group>"; };
 		D77DFDE61B3EBCCD00361D55 /* Pre-VotingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pre-VotingViewController.swift"; sourceTree = "<group>"; };
-		D77DFDEA1B3EC00800361D55 /* VotingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingTableViewController.swift; sourceTree = "<group>"; };
 		D77DFDEC1B3EC11700361D55 /* PunishingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunishingViewController.swift; sourceTree = "<group>"; };
-		D77DFDEE1B3EC1B500361D55 /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
-		D77DFDF01B3EC1D300361D55 /* TotalResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalResultTableViewController.swift; sourceTree = "<group>"; };
 		D77DFDF21B3ECD0A00361D55 /* VotingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingViewController.swift; sourceTree = "<group>"; };
 		D77DFDF61B3ECE9300361D55 /* VotingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VotingTableViewCell.swift; sourceTree = "<group>"; };
 		D77DFDF71B3ECE9300361D55 /* VotingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VotingTableViewCell.xib; sourceTree = "<group>"; };
@@ -102,12 +106,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D718080C1BAD7CE600A43E0E /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				D718080D1BAD7CE600A43E0E /* Default-568h@2x.png */,
+				D718080E1BAD7CE600A43E0E /* Default-667h@2x.png */,
+				D718080F1BAD7CE600A43E0E /* Default-736h@3x.png */,
+			);
+			path = Defaults;
+			sourceTree = "<group>";
+		};
 		D797FEA81AB20031005C7CB7 = {
 			isa = PBXGroup;
 			children = (
+				D71808161BCE74BE00A43E0E /* icon.png */,
 				D797FEB31AB20031005C7CB7 /* GameOfWerewolf */,
 				D797FEC91AB20031005C7CB7 /* GameOfWerewolfTests */,
 				D797FEB21AB20031005C7CB7 /* Products */,
+				D718080C1BAD7CE600A43E0E /* Defaults */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,11 +153,9 @@
 				D77DFDE21B3EBB1700361D55 /* DevatingViewController.swift */,
 				D77DFDE41B3EBB8700361D55 /* FinishDevateViewController.swift */,
 				D77DFDE61B3EBCCD00361D55 /* Pre-VotingViewController.swift */,
-				D77DFDEA1B3EC00800361D55 /* VotingTableViewController.swift */,
 				D77DFDF21B3ECD0A00361D55 /* VotingViewController.swift */,
 				D77DFDEC1B3EC11700361D55 /* PunishingViewController.swift */,
-				D77DFDEE1B3EC1B500361D55 /* ResultTableViewController.swift */,
-				D77DFDF01B3EC1D300361D55 /* TotalResultTableViewController.swift */,
+				D71808131BAD7DD500A43E0E /* Main4.storyboard */,
 				D797FEBA1AB20031005C7CB7 /* Main.storyboard */,
 				D797FEBD1AB20031005C7CB7 /* Images.xcassets */,
 				D797FEBF1AB20031005C7CB7 /* LaunchScreen.xib */,
@@ -227,7 +241,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Kento Ohara";
 				TargetAttributes = {
 					D797FEB01AB20031005C7CB7 = {
@@ -268,7 +282,12 @@
 				D797FEBC1AB20031005C7CB7 /* Main.storyboard in Resources */,
 				D797FEC11AB20031005C7CB7 /* LaunchScreen.xib in Resources */,
 				D7CA0F721B07648800CBFF96 /* RolenumberTableViewCell.xib in Resources */,
+				D71808151BAD7DD500A43E0E /* Main4.storyboard in Resources */,
 				D77DFDF91B3ECE9300361D55 /* VotingTableViewCell.xib in Resources */,
+				D71808171BCE74BE00A43E0E /* icon.png in Resources */,
+				D71808121BAD7CE600A43E0E /* Default-736h@3x.png in Resources */,
+				D71808111BAD7CE600A43E0E /* Default-667h@2x.png in Resources */,
+				D71808101BAD7CE600A43E0E /* Default-568h@2x.png in Resources */,
 				D797FEBE1AB20031005C7CB7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,16 +317,13 @@
 				D77DFDE51B3EBB8700361D55 /* FinishDevateViewController.swift in Sources */,
 				D797FEB91AB20031005C7CB7 /* ViewController.swift in Sources */,
 				D77DFDF81B3ECE9300361D55 /* VotingTableViewCell.swift in Sources */,
-				D77DFDF11B3EC1D300361D55 /* TotalResultTableViewController.swift in Sources */,
 				D77DFDD91B3E7D0100361D55 /* SeventhViewController.swift in Sources */,
 				D77DFDED1B3EC11700361D55 /* PunishingViewController.swift in Sources */,
 				D79560161AB83F0B00016470 /* ThirdViewController.swift in Sources */,
-				D77DFDEB1B3EC00800361D55 /* VotingTableViewController.swift in Sources */,
 				D797FEB71AB20031005C7CB7 /* AppDelegate.swift in Sources */,
 				D7178D341B19CD9900DC3260 /* PlayerItemsTableViewCell.swift in Sources */,
 				D7CA0F711B07648800CBFF96 /* RolenumberTableViewCell.swift in Sources */,
 				D704E2581AE246BA00D6F5E4 /* ForthViewController.swift in Sources */,
-				D77DFDEF1B3EC1B500361D55 /* ResultTableViewController.swift in Sources */,
 				D77DFDDF1B3EB6D700361D55 /* Pre-devatingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +347,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D71808131BAD7DD500A43E0E /* Main4.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D71808141BAD7DD500A43E0E /* Base */,
+			);
+			name = Main4.storyboard;
+			sourceTree = "<group>";
+		};
 		D797FEBA1AB20031005C7CB7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -370,6 +394,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -435,6 +460,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GameOfWerewolf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.litech.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -448,6 +474,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GameOfWerewolf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.litech.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -467,6 +494,7 @@
 				);
 				INFOPLIST_FILE = GameOfWerewolfTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.litech.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameOfWerewolf.app/GameOfWerewolf";
 			};
@@ -482,6 +510,7 @@
 				);
 				INFOPLIST_FILE = GameOfWerewolfTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.litech.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GameOfWerewolf.app/GameOfWerewolf";
 			};

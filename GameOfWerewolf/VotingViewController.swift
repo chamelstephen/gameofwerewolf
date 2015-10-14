@@ -10,11 +10,17 @@ import UIKit
 
 class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var myPlayerItems: NSMutableArray = []
-    var votedplayerItems: NSMutableArray = []
+    var myPlayerItems: [String] = []
+    var votedplayerItems: [String] = []
     var votingplayer: NSString = ""
     
+    var votedDataArray: [String] = []
+    
     var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    let playerData3 = NSUserDefaults.standardUserDefaults()
+    
+    let saveVotedData = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet var votingplayertable: UITableView!
 
@@ -25,8 +31,20 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        myPlayerItems = appdelegate.playerarray
-        votedplayerItems = appdelegate.arraydefault
+        myPlayerItems = appdelegate.votercounterarray
+        //votedplayerItems = appdelegate.votetableviewarray
+        
+        if myPlayerItems.count == 0 {
+            myPlayerItems = playerData3.arrayForKey("player") as! [String]
+            
+        }
+        
+        votedplayerItems = playerData3.arrayForKey("player") as! [String]
+        
+        
+        print("myPlayerItems==\(myPlayerItems)")
+        print("votedplayerItems==\(votedplayerItems)")
+        
         
         votingplayertable.delegate = self
         votingplayertable.dataSource = self
@@ -35,15 +53,22 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let votingxib = UINib(nibName: "VotingTableViewCell", bundle: nil)
         votingplayertable.registerNib(votingxib, forCellReuseIdentifier: "VotingCell")
         
-        votingplayer = myPlayerItems[0] as! NSString
-        votedplayerItems.removeObject("\(myPlayerItems[0])")
+        votingplayer = myPlayerItems[0] as NSString
         
-        myPlayerItems.removeObjectAtIndex(0)
+        votedplayerItems.removeAtIndex((playerData3.arrayForKey("player")?.count)! - myPlayerItems.count)//([0]=votingplayer)
+        myPlayerItems.removeAtIndex(0)
+        
         if myPlayerItems.count == 0 {
             
         } else {
-            appdelegate.playerarray = myPlayerItems
             print("次の投票者:\(myPlayerItems[0])")
+        }
+        
+        if saveVotedData.arrayForKey("votedData") == nil {
+            
+        } else {
+            votedDataArray = saveVotedData.arrayForKey("votedData") as! [String]
+            
         }
     }
 
@@ -68,7 +93,7 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var votecheckalert = UIAlertController(title: "投票確認", message: "あなたは\(votedplayerItems[indexPath.row])さんに投票しますか？", preferredStyle: .Alert)
+        let votecheckalert = UIAlertController(title: "投票確認", message: "あなたは\(votedplayerItems[indexPath.row])さんに投票しますか？", preferredStyle: .Alert)
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: .Cancel, handler: {(action: UIAlertAction)
             -> Void in
@@ -78,20 +103,25 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction) -> Void in
             
+            self.votedDataArray.append(self.votedplayerItems[indexPath.row])
+            print("投票された人==\(self.votedDataArray)")
+            
+            self.saveVotedData.setObject(("\(self.votedDataArray)"), forKey:"votedData")
+            print(self.saveVotedData.arrayForKey("votedData"))
+
+            
             if self.myPlayerItems.count == 0 {
-                var targetView = self.storyboard?.instantiateViewControllerWithIdentifier("gopunishing")as! UIViewController
-                self.presentViewController(targetView, animated: true, completion: nil)
+                let targetView = self.storyboard?.instantiateViewControllerWithIdentifier("gopunishing")
+                self.presentViewController(targetView!, animated: true, completion: nil)
                     
-                self.votedplayerItems.addObject("\(self.votingplayer)")
-                self.appdelegate.arraydefault = self.votedplayerItems
-                self.appdelegate.playerarray = self.votedplayerItems
+                self.votedplayerItems.append("\(self.votingplayer)")
                 
             } else {
-                var targetView = self.storyboard?.instantiateViewControllerWithIdentifier("prevoting")as! UIViewController
-                self.presentViewController(targetView, animated: true, completion: nil)
+                let targetView = self.storyboard?.instantiateViewControllerWithIdentifier("prevoting")
+                self.presentViewController(targetView!, animated: true, completion: nil)
                 
-                self.votedplayerItems.addObject("\(self.votingplayer)")
-                self.appdelegate.arraydefault = self.votedplayerItems
+                self.votedplayerItems.append("\(self.votingplayer)")
+                self.appdelegate.votercounterarray = self.myPlayerItems
                 
             }
             
@@ -110,7 +140,9 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     テーブルに表示する配列の総数を返す.
     */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (votedplayerItems.count - 1)
+        
+        print("tableviewcellの総数=\(votedplayerItems.count)")
+        return (votedplayerItems.count)
         
     }
     

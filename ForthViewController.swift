@@ -11,7 +11,7 @@ import UIKit
 class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var worktableview:UITableView!
-    var countplayer: Int = 0
+    var countplayer: Int!
     
     var werewolfnumber: Int = 1
     var citizennumber: Int = 0
