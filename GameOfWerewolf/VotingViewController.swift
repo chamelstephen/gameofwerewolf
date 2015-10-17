@@ -64,6 +64,8 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("次の投票者:\(myPlayerItems[0])")
         }
         
+        saveVotedData.setObject(("\(self.votedDataArray)"), forKey:"votedData")
+        
         if saveVotedData.arrayForKey("votedData") == nil {
             
         } else {

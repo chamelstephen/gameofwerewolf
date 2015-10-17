@@ -15,6 +15,16 @@
 		D71808121BAD7CE600A43E0E /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D718080F1BAD7CE600A43E0E /* Default-736h@3x.png */; settings = {ASSET_TAGS = (); }; };
 		D71808151BAD7DD500A43E0E /* Main4.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D71808131BAD7DD500A43E0E /* Main4.storyboard */; settings = {ASSET_TAGS = (); }; };
 		D71808171BCE74BE00A43E0E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D71808161BCE74BE00A43E0E /* icon.png */; settings = {ASSET_TAGS = (); }; };
+		D76F97411BD2227300337B6F /* ic_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D76F97401BD2227300337B6F /* ic_settings.png */; settings = {ASSET_TAGS = (); }; };
+		D76F97441BD222D800337B6F /* ic_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76F97421BD222D800337B6F /* ic_settings@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D76F97451BD222D800337B6F /* ic_settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76F97431BD222D800337B6F /* ic_settings@3x.png */; settings = {ASSET_TAGS = (); }; };
+		D76F97491BD2286000337B6F /* ic_input.png in Resources */ = {isa = PBXBuildFile; fileRef = D76F97461BD2286000337B6F /* ic_input.png */; settings = {ASSET_TAGS = (); }; };
+		D76F974A1BD2286000337B6F /* ic_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76F97471BD2286000337B6F /* ic_input@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D76F974B1BD2286000337B6F /* ic_input@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76F97481BD2286000337B6F /* ic_input@3x.png */; settings = {ASSET_TAGS = (); }; };
+		D76F974F1BD22A1F00337B6F /* ic_subject.png in Resources */ = {isa = PBXBuildFile; fileRef = D76F974C1BD22A1F00337B6F /* ic_subject.png */; settings = {ASSET_TAGS = (); }; };
+		D76F97501BD22A1F00337B6F /* ic_subject@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76F974D1BD22A1F00337B6F /* ic_subject@2x.png */; settings = {ASSET_TAGS = (); }; };
+		D76F97511BD22A1F00337B6F /* ic_subject@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76F974E1BD22A1F00337B6F /* ic_subject@3x.png */; settings = {ASSET_TAGS = (); }; };
+		D76F97531BD22E6000337B6F /* background-moon.png in Resources */ = {isa = PBXBuildFile; fileRef = D76F97521BD22E6000337B6F /* background-moon.png */; settings = {ASSET_TAGS = (); }; };
 		D77DFDD91B3E7D0100361D55 /* SeventhViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDD81B3E7D0100361D55 /* SeventhViewController.swift */; };
 		D77DFDDB1B3E9A7100361D55 /* EighthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDDA1B3E9A7100361D55 /* EighthViewController.swift */; };
 		D77DFDDF1B3EB6D700361D55 /* Pre-devatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DFDDE1B3EB6D700361D55 /* Pre-devatingViewController.swift */; };
@@ -59,6 +69,16 @@
 		D718080F1BAD7CE600A43E0E /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		D71808141BAD7DD500A43E0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main4.storyboard; sourceTree = "<group>"; };
 		D71808161BCE74BE00A43E0E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = GameOfWerewolf/icon.png; sourceTree = "<group>"; };
+		D76F97401BD2227300337B6F /* ic_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_settings.png; path = GameOfWerewolf/ic_settings.png; sourceTree = "<group>"; };
+		D76F97421BD222D800337B6F /* ic_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_settings@2x.png"; sourceTree = "<group>"; };
+		D76F97431BD222D800337B6F /* ic_settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_settings@3x.png"; sourceTree = "<group>"; };
+		D76F97461BD2286000337B6F /* ic_input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_input.png; path = GameOfWerewolf/ic_input.png; sourceTree = "<group>"; };
+		D76F97471BD2286000337B6F /* ic_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_input@2x.png"; path = "GameOfWerewolf/ic_input@2x.png"; sourceTree = "<group>"; };
+		D76F97481BD2286000337B6F /* ic_input@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_input@3x.png"; path = "GameOfWerewolf/ic_input@3x.png"; sourceTree = "<group>"; };
+		D76F974C1BD22A1F00337B6F /* ic_subject.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_subject.png; path = GameOfWerewolf/ic_subject.png; sourceTree = "<group>"; };
+		D76F974D1BD22A1F00337B6F /* ic_subject@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_subject@2x.png"; path = "GameOfWerewolf/ic_subject@2x.png"; sourceTree = "<group>"; };
+		D76F974E1BD22A1F00337B6F /* ic_subject@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_subject@3x.png"; path = "GameOfWerewolf/ic_subject@3x.png"; sourceTree = "<group>"; };
+		D76F97521BD22E6000337B6F /* background-moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-moon.png"; sourceTree = "<group>"; };
 		D77DFDD81B3E7D0100361D55 /* SeventhViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeventhViewController.swift; path = ../SeventhViewController.swift; sourceTree = "<group>"; };
 		D77DFDDA1B3E9A7100361D55 /* EighthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EighthViewController.swift; sourceTree = "<group>"; };
 		D77DFDDE1B3EB6D700361D55 /* Pre-devatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pre-devatingViewController.swift"; sourceTree = "<group>"; };
@@ -119,6 +139,15 @@
 		D797FEA81AB20031005C7CB7 = {
 			isa = PBXGroup;
 			children = (
+				D76F974C1BD22A1F00337B6F /* ic_subject.png */,
+				D76F974D1BD22A1F00337B6F /* ic_subject@2x.png */,
+				D76F974E1BD22A1F00337B6F /* ic_subject@3x.png */,
+				D76F97421BD222D800337B6F /* ic_settings@2x.png */,
+				D76F97431BD222D800337B6F /* ic_settings@3x.png */,
+				D76F97401BD2227300337B6F /* ic_settings.png */,
+				D76F97461BD2286000337B6F /* ic_input.png */,
+				D76F97471BD2286000337B6F /* ic_input@2x.png */,
+				D76F97481BD2286000337B6F /* ic_input@3x.png */,
 				D71808161BCE74BE00A43E0E /* icon.png */,
 				D797FEB31AB20031005C7CB7 /* GameOfWerewolf */,
 				D797FEC91AB20031005C7CB7 /* GameOfWerewolfTests */,
@@ -156,6 +185,7 @@
 				D77DFDF21B3ECD0A00361D55 /* VotingViewController.swift */,
 				D77DFDEC1B3EC11700361D55 /* PunishingViewController.swift */,
 				D71808131BAD7DD500A43E0E /* Main4.storyboard */,
+				D76F97521BD22E6000337B6F /* background-moon.png */,
 				D797FEBA1AB20031005C7CB7 /* Main.storyboard */,
 				D797FEBD1AB20031005C7CB7 /* Images.xcassets */,
 				D797FEBF1AB20031005C7CB7 /* LaunchScreen.xib */,
@@ -280,14 +310,24 @@
 			files = (
 				D7178D351B19CD9900DC3260 /* PlayerItemsTableViewCell.xib in Resources */,
 				D797FEBC1AB20031005C7CB7 /* Main.storyboard in Resources */,
+				D76F974B1BD2286000337B6F /* ic_input@3x.png in Resources */,
 				D797FEC11AB20031005C7CB7 /* LaunchScreen.xib in Resources */,
+				D76F97451BD222D800337B6F /* ic_settings@3x.png in Resources */,
 				D7CA0F721B07648800CBFF96 /* RolenumberTableViewCell.xib in Resources */,
 				D71808151BAD7DD500A43E0E /* Main4.storyboard in Resources */,
+				D76F97441BD222D800337B6F /* ic_settings@2x.png in Resources */,
+				D76F97501BD22A1F00337B6F /* ic_subject@2x.png in Resources */,
+				D76F974A1BD2286000337B6F /* ic_input@2x.png in Resources */,
 				D77DFDF91B3ECE9300361D55 /* VotingTableViewCell.xib in Resources */,
 				D71808171BCE74BE00A43E0E /* icon.png in Resources */,
+				D76F97531BD22E6000337B6F /* background-moon.png in Resources */,
+				D76F97491BD2286000337B6F /* ic_input.png in Resources */,
+				D76F974F1BD22A1F00337B6F /* ic_subject.png in Resources */,
+				D76F97511BD22A1F00337B6F /* ic_subject@3x.png in Resources */,
 				D71808121BAD7CE600A43E0E /* Default-736h@3x.png in Resources */,
 				D71808111BAD7CE600A43E0E /* Default-667h@2x.png in Resources */,
 				D71808101BAD7CE600A43E0E /* Default-568h@2x.png in Resources */,
+				D76F97411BD2227300337B6F /* ic_settings.png in Resources */,
 				D797FEBE1AB20031005C7CB7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
