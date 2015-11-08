@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -63,7 +63,7 @@
         <!--設定確認-->
         <scene sceneID="FKF-lT-J9w">
             <objects>
-                <viewController storyboardIdentifier="SecondView" id="r79-Bh-WYi" customClass="SecondViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondView" id="r79-Bh-WYi" customClass="SecondViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m9v-qH-Nh6"/>
                         <viewControllerLayoutGuide type="bottom" id="KBX-ng-apn"/>
@@ -254,7 +254,7 @@
         <!--プレイヤー設定-->
         <scene sceneID="Dtz-e9-mlQ">
             <objects>
-                <viewController id="faG-DJ-Lb6" customClass="ThirdViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="faG-DJ-Lb6" customClass="ThirdViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iGh-qn-dah"/>
                         <viewControllerLayoutGuide type="bottom" id="dAi-Zo-5Ch"/>
@@ -284,7 +284,7 @@
                                 <rect key="frame" x="0.0" y="30" width="320" height="355"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyCell" rowHeight="55" id="TXM-hF-Nw0" customClass="PlayerItemsTableViewCell" customModule="GameOfWerewolf" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyCell" rowHeight="55" id="TXM-hF-Nw0" customClass="PlayerItemsTableViewCell" customModule="OneNight" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="22" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TXM-hF-Nw0" id="dtO-eI-HMz">
@@ -313,7 +313,7 @@
         <!--Sixth View Controller-->
         <scene sceneID="Sxg-eC-DzC">
             <objects>
-                <viewController storyboardIdentifier="roleprecheck" id="NNE-7M-98W" customClass="SixthViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="roleprecheck" id="NNE-7M-98W" customClass="SixthViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dQI-ko-MD7"/>
                         <viewControllerLayoutGuide type="bottom" id="DpM-Nj-dfz"/>
@@ -364,7 +364,7 @@
         <!--Seventh View Controller-->
         <scene sceneID="vDW-Z7-h8a">
             <objects>
-                <viewController storyboardIdentifier="rolecheck" id="aIf-sZ-58P" customClass="SeventhViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rolecheck" id="aIf-sZ-58P" customClass="SeventhViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y4G-Pi-371"/>
                         <viewControllerLayoutGuide type="bottom" id="2zY-og-Fwb"/>
@@ -408,7 +408,7 @@
         <!--Eighth View Controller-->
         <scene sceneID="lvH-Eh-TsJ">
             <objects>
-                <viewController id="1PA-sB-jSW" customClass="EighthViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1PA-sB-jSW" customClass="EighthViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H09-l6-G3S"/>
                         <viewControllerLayoutGuide type="bottom" id="zyf-7E-nFG"/>
@@ -450,7 +450,7 @@
         <!--Good Morning View Controller-->
         <scene sceneID="N5t-w9-l3d">
             <objects>
-                <viewController id="JVH-Q8-LmP" customClass="GoodMorningViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JVH-Q8-LmP" customClass="GoodMorningViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vdO-9s-JNZ"/>
                         <viewControllerLayoutGuide type="bottom" id="McV-ZR-E97"/>
@@ -488,7 +488,7 @@
         <!--Pre devating View Controller-->
         <scene sceneID="trM-Em-zCP">
             <objects>
-                <viewController id="A8d-Sv-nG1" customClass="Pre_devatingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="A8d-Sv-nG1" customClass="Pre_devatingViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pOl-Sc-x5A"/>
                         <viewControllerLayoutGuide type="bottom" id="WaJ-DO-OD9"/>
@@ -527,7 +527,7 @@
         <!--Devating View Controller-->
         <scene sceneID="lth-eD-8aC">
             <objects>
-                <viewController id="SX3-T9-LoW" customClass="DevatingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SX3-T9-LoW" customClass="DevatingViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Elm-Il-b35"/>
                         <viewControllerLayoutGuide type="bottom" id="Pla-BV-L15"/>
@@ -582,7 +582,7 @@
         <!--Pre Voting View Controller-->
         <scene sceneID="MmJ-w8-o1t">
             <objects>
-                <viewController storyboardIdentifier="prevoting" id="ghM-ag-Svp" customClass="Pre_VotingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="prevoting" id="ghM-ag-Svp" customClass="Pre_VotingViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KQg-Ay-Uui"/>
                         <viewControllerLayoutGuide type="bottom" id="YGl-bf-KZJ"/>
@@ -642,7 +642,7 @@
         <!--Voting View Controller-->
         <scene sceneID="d8S-14-0qq">
             <objects>
-                <viewController id="eor-e1-lYk" customClass="VotingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eor-e1-lYk" customClass="VotingViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="23V-P8-fVQ"/>
                         <viewControllerLayoutGuide type="bottom" id="MAV-Do-tOu"/>
@@ -688,7 +688,7 @@
         <!--Result Table View Controller-->
         <scene sceneID="QJ8-ir-nNb">
             <objects>
-                <tableViewController id="5Z0-v6-iyC" customClass="ResultTableViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="5Z0-v6-iyC" customClass="ResultTableViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EIG-C8-scs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -717,7 +717,7 @@
         <!--Total Result Table View Controller-->
         <scene sceneID="amC-RD-SKg">
             <objects>
-                <tableViewController id="PM0-FM-oA0" customClass="TotalResultTableViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="PM0-FM-oA0" customClass="TotalResultTableViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1Gt-Vl-gyA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -746,7 +746,7 @@
         <!--Punishing View Controller-->
         <scene sceneID="jEn-8X-HMA">
             <objects>
-                <viewController id="Pbd-7g-CO9" customClass="PunishingViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Pbd-7g-CO9" customClass="PunishingViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ekY-sV-6jj"/>
                         <viewControllerLayoutGuide type="bottom" id="Mtp-SZ-dqB"/>
@@ -766,7 +766,7 @@
         <!--Finish Devate View Controller-->
         <scene sceneID="lls-wo-Dcw">
             <objects>
-                <viewController id="nee-cc-Dzt" customClass="FinishDevateViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nee-cc-Dzt" customClass="FinishDevateViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C7k-Yo-Fru"/>
                         <viewControllerLayoutGuide type="bottom" id="7WT-SD-Q6c"/>
@@ -839,7 +839,7 @@
         <!--Fifth View Controller-->
         <scene sceneID="zo5-pc-hC3">
             <objects>
-                <viewController id="IPO-nL-dXU" customClass="FifthViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IPO-nL-dXU" customClass="FifthViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AOT-5g-gDN"/>
                         <viewControllerLayoutGuide type="bottom" id="QAk-gL-i9z"/>
@@ -893,7 +893,7 @@
         <!--役職設定-->
         <scene sceneID="yK3-N0-RGU">
             <objects>
-                <viewController id="zNd-rX-ueU" customClass="ForthViewController" customModule="GameOfWerewolf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zNd-rX-ueU" customClass="ForthViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ie4-xg-81p"/>
                         <viewControllerLayoutGuide type="bottom" id="B7c-7Z-Wmg"/>
@@ -906,7 +906,7 @@
                                 <rect key="frame" x="0.0" y="30" width="320" height="355"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkCell" rowHeight="100" id="dcJ-Si-r6H" customClass="RolenumberTableViewCell" customModule="GameOfWerewolf" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkCell" rowHeight="100" id="dcJ-Si-r6H" customClass="RolenumberTableViewCell" customModule="OneNight" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dcJ-Si-r6H" id="wwC-tn-nZX">

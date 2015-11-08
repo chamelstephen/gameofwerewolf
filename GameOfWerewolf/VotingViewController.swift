@@ -14,13 +14,14 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var votedplayerItems: [String] = []
     var votingplayer: NSString = ""
     
-    var votedDataArray: [String] = []
     
     var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     let playerData3 = NSUserDefaults.standardUserDefaults()
     
-    let saveVotedData = NSUserDefaults.standardUserDefaults()
+    var VotedCountDataArray: [String] = []
+    var playerVotedDataArray = NSUserDefaults.standardUserDefaults()
+    
     
     @IBOutlet var votingplayertable: UITableView!
 
@@ -34,12 +35,7 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         myPlayerItems = appdelegate.votercounterarray
         //votedplayerItems = appdelegate.votetableviewarray
         
-        if myPlayerItems.count == 0 {
-            myPlayerItems = playerData3.arrayForKey("player") as! [String]
-            
-        }
         
-        votedplayerItems = playerData3.arrayForKey("player") as! [String]
         
         
         print("myPlayerItems==\(myPlayerItems)")
@@ -64,14 +60,7 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print("次の投票者:\(myPlayerItems[0])")
         }
         
-        saveVotedData.setObject(("\(self.votedDataArray)"), forKey:"votedData")
         
-        if saveVotedData.arrayForKey("votedData") == nil {
-            
-        } else {
-            votedDataArray = saveVotedData.arrayForKey("votedData") as! [String]
-            
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,11 +94,7 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction) -> Void in
             
-            self.votedDataArray.append(self.votedplayerItems[indexPath.row])
-            print("投票された人==\(self.votedDataArray)")
-            
-            self.saveVotedData.setObject(("\(self.votedDataArray)"), forKey:"votedData")
-            print(self.saveVotedData.arrayForKey("votedData"))
+            VotedCountDataArray = playerVotedDataArray.objectForKey("CountDataArray")
 
             
             if self.myPlayerItems.count == 0 {

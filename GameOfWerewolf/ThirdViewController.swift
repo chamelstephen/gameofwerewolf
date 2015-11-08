@@ -20,6 +20,10 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var myPlayerSections: [String] = ["Players"]
     
     let appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    var VotedCountDataArray: [String] = []
+    
+    var VotedCountDataInt: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -218,6 +222,25 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let playerData = NSUserDefaults.standardUserDefaults()
         playerData.setObject( (myPlayerItems), forKey: "player")
+        
+        /*
+        let playervotedDataArray = NSUserDefaults.standardUserDefaults()
+        playervotedDataArray.setObject((myPlayerItems), forKey: "voterDataArray")
+        */
+        
+        VotedCountDataInt = myPlayerItems.count
+        
+        while VotedCountDataInt > 0 {
+            VotedCountDataArray.append("VotedDataNumberInt Player(\(VotedCountDataInt))")
+            
+            VotedCountDataInt = VotedCountDataInt - 1
+        }
+        
+        print("\(VotedCountDataArray)")
+        
+        let playerVotedDataArray = NSUserDefaults.standardUserDefaults()
+        playerVotedDataArray.setObject((VotedCountDataArray), forKey: "CountDataArray")
+        
         
         
         if myPlayerItems.count < 11 && myPlayerItems.count > 2 {
