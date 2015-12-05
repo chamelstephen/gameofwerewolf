@@ -26,6 +26,8 @@ class Pre_VotingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        
+        
         nameArray = appdelegate.voterarray
         
         if nameArray.count == 0{

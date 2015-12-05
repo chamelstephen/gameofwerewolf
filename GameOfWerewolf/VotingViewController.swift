@@ -22,6 +22,7 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var VotedCountDataArray: [String] = []
     var playerVotedDataArray = NSUserDefaults.standardUserDefaults()
     
+    var VotedCountArray: [String] = []//ここに投票した相手の名前を入れる[①が投票した人,②が投票した人,,]
     
     @IBOutlet var votingplayertable: UITableView!
 
@@ -94,7 +95,13 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction) -> Void in
             
-            VotedCountDataArray = playerVotedDataArray.objectForKey("CountDataArray")
+            //VotedCountDataArray = playerVotedDataArray.objectForKey("CountDataArray")! as! [String]//エラー解除？
+            
+            self.VotedCountArray = self.playerVotedDataArray.objectForKey("votedPlayer")! as! [String]//前回までのプレイヤーの投票情報をVotedCountArrayに挿入
+            
+            self.VotedCountArray.append("\(self.votedplayerItems[indexPath.row])")//プレイヤーの投票情報を追加
+            self.playerVotedDataArray.setObject("\(self.VotedCountArray)", forKey: "votedPlayer")//前回まで+今回の投票情報をplayerVotedDataArrayに保存
+            
 
             
             if self.myPlayerItems.count == 0 {

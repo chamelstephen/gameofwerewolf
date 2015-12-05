@@ -21,9 +21,9 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     let appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
-    var VotedCountDataArray: [String] = []
+    //var VotedCountDataArray: [String] = []
     
-    var VotedCountDataInt: Int = 0
+    //var VotedCountDataInt: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         mytableview.registerNib(playerxib, forCellReuseIdentifier: "MyCell")
         
         let playerdata = NSUserDefaults.standardUserDefaults()
+        
+        print("\(myPlayerItems)")
         
     }
     
@@ -103,9 +105,11 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.NameTextField!.delegate = self
         cell.NameTextField!.borderStyle = UITextBorderStyle.RoundedRect
         cell.NameTextField!.returnKeyType = UIReturnKeyType.Done
-        cell.NameTextField!.text = "プレイヤー\(indexPath.row+1)"
+        cell.NameTextField!.text = "\(myPlayerItems[indexPath.row])"
         cell.NameTextField!.layer.borderColor = UIColor.blackColor().CGColor
         //文字数制限
+        
+        cell.NameTextField!.tag = indexPath.row //textfieldにtagをつけることで、何番目のtextfieldかがわかる
         
         cell.PlayerImageView.userInteractionEnabled = true
         let PlayerImagetap = UITapGestureRecognizer (target: self, action: "imagetaped:")
@@ -115,11 +119,29 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        myPlayerItems[textField.tag] = "\(textField.text!)"
+        
+        print("\(myPlayerItems)")
+        
+        return
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        print(textField.text)
+        //配列myPlayerItemsに入力したテキストを入れかえる
+        
+        //selectedのcellを把握＞textをmyplayeritemsに代入して入れ替え
+        myPlayerItems[textField.tag] = "\(textField.text!)"
+        
+        print("\(myPlayerItems)")
+        
         return true
         
     }
+    
+    
     
     func imagetaped(sender: UITapGestureRecognizer) {
         //写真に接続
@@ -212,6 +234,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func next()  {
+        print("\(myPlayerItems)")
+        
         appdelegate.arraydefault = myPlayerItems
         appdelegate.playerarray = myPlayerItems
         
@@ -228,9 +252,11 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         playervotedDataArray.setObject((myPlayerItems), forKey: "voterDataArray")
         */
         
+        /*
         VotedCountDataInt = myPlayerItems.count
         
         while VotedCountDataInt > 0 {
+            
             VotedCountDataArray.append("VotedDataNumberInt Player(\(VotedCountDataInt))")
             
             VotedCountDataInt = VotedCountDataInt - 1
@@ -239,7 +265,9 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         print("\(VotedCountDataArray)")
         
         let playerVotedDataArray = NSUserDefaults.standardUserDefaults()
-        playerVotedDataArray.setObject((VotedCountDataArray), forKey: "CountDataArray")
+        playerVotedDataArray.setObject((VotedCountDataArray), forKey: "CountDataArray")//ここで保存している。名前を保存。
+
+        */
         
         
         
@@ -266,8 +294,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    //選択不可
     //セル追加後に名前が消える
     
-        
+    
+    //storyboardでtableviewを選択〜ベースからselection〜no selectionを選択〜cellが選択されない
 }
