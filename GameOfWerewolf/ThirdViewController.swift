@@ -71,19 +71,19 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     /*
     Cellが選択された際に呼び出される.
     */
-    /*
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
             if indexPath.section == 0 {
-                return nil
+                print("0")
             } else if indexPath.section == 1 {
-                return nil
+                print("1")
             } else if indexPath.section == 2 {
-                return nil
+                print("2")
             }
         
     }
-    */
+
     
     /*
     テーブルに表示する配列の総数を返す.

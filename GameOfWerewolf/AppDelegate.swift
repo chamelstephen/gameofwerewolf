@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if height == 480 {
             storyboard = UIStoryboard(name: "Main", bundle: nil)
         } else {
-            storyboard = UIStoryboard(name: "Main4", bundle: nil)
+            storyboard = UIStoryboard(name: "Main4inch", bundle: nil)
         }
         return storyboard
     }

@@ -26,13 +26,11 @@ class Pre_VotingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        
-        
         nameArray = appdelegate.voterarray
         
         if nameArray.count == 0{
             nameArray = playerData2.arrayForKey("player")! as! [String]
-        }
+        }//初回はここでNSDefaultsからプレイヤーの名前を配列に入れる。次回からは投票を済ませたプレイヤーの名前が削除されたappdelegate.voterarrayが挿入される。
         
         print("nameArray==>>\(nameArray)")
         print("nameArrray[0]==>>\(nameArray[0])")

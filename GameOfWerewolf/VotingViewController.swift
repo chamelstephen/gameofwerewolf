@@ -10,19 +10,23 @@ import UIKit
 
 class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var myPlayerItems: [String] = []
-    var votedplayerItems: [String] = []
-    var votingplayer: NSString = ""
+    var myPlayerItems: [String] = []//投票済みのプレイヤーから削除していく
+    var votedplayerItems: [String] = []//投票中のプレイヤーのみ削除。投票候補の表示に使う
+    var votingplayer: NSString = ""//投票中のプレイヤー名を挿入
+    
+    var allPlayerItems: [String] = []//全プレイヤーを表示
     
     
     var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     let playerData3 = NSUserDefaults.standardUserDefaults()
     
-    var VotedCountDataArray: [String] = []
-    var playerVotedDataArray = NSUserDefaults.standardUserDefaults()
+    var VotedCountDataArray: [String] = []//？？目的不明。不使用。
+    var playerVotedDataArray = NSUserDefaults.standardUserDefaults()//VotedCountArrayを代入し、保存
     
     var VotedCountArray: [String] = []//ここに投票した相手の名前を入れる[①が投票した人,②が投票した人,,]
+    
+    var voteCheckArray: [String] = []//print用
     
     @IBOutlet var votingplayertable: UITableView!
 
@@ -33,11 +37,17 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
+        allPlayerItems = playerData3.arrayForKey("player")! as! [String]
+        print ("プレイヤー一覧：\(allPlayerItems)")
+        votedplayerItems = allPlayerItems
+        
         myPlayerItems = appdelegate.votercounterarray
         //votedplayerItems = appdelegate.votetableviewarray
         
-        
-        
+        if myPlayerItems.count == 0 {
+            myPlayerItems = playerData3.arrayForKey("player")! as! [String]
+            
+        }//初回はここでNSDefaultsからプレイヤーの名前を配列に入れる。次回からは投票を済ませたプレイヤーの名前が削除されたappdelegate.voterarrayが挿入される。→→投票しているプレイヤーをプレイヤー一覧から削除する。
         
         print("myPlayerItems==\(myPlayerItems)")
         print("votedplayerItems==\(votedplayerItems)")
@@ -50,10 +60,14 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let votingxib = UINib(nibName: "VotingTableViewCell", bundle: nil)
         votingplayertable.registerNib(votingxib, forCellReuseIdentifier: "VotingCell")
         
-        votingplayer = myPlayerItems[0] as NSString
+        votingplayer = myPlayerItems[0] as NSString//投票している人
         
-        votedplayerItems.removeAtIndex((playerData3.arrayForKey("player")?.count)! - myPlayerItems.count)//([0]=votingplayer)
-        myPlayerItems.removeAtIndex(0)
+        myPlayerItems.removeAtIndex(0)//投票している人を削除
+        
+        votedplayerItems.removeAtIndex((allPlayerItems.count)-(myPlayerItems.count)-1)//([0]=votingplayer)投票しているプレイヤーを削除
+        //votedplayerItemsの削除対象はmyPlayerItems.countの数から割り出せばよい。[allplayerItems.count-myplayerItems.count-1]番目を削除するのだ。
+        
+        appdelegate.votercounterarray = myPlayerItems//次回のmyPlayerItemsには一人減らされた状態で挿入される。
         
         if myPlayerItems.count == 0 {
             
@@ -87,6 +101,8 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let votecheckalert = UIAlertController(title: "投票確認", message: "あなたは\(votedplayerItems[indexPath.row])さんに投票しますか？", preferredStyle: .Alert)
         
+        print("投票選択者：\(votedplayerItems[indexPath.row])")
+        
         let cancelAction: UIAlertAction = UIAlertAction(title: "いいえ", style: .Cancel, handler: {(action: UIAlertAction)
             -> Void in
             
@@ -95,13 +111,29 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction) -> Void in
             
+            //ここの処理でエラーが発生する（１月９日）
+            
             //VotedCountDataArray = playerVotedDataArray.objectForKey("CountDataArray")! as! [String]//エラー解除？
             
-            self.VotedCountArray = self.playerVotedDataArray.objectForKey("votedPlayer")! as! [String]//前回までのプレイヤーの投票情報をVotedCountArrayに挿入
+            if self.allPlayerItems[0] == self.votingplayer {
+                //初回はこっち
+                //初回は"votedPlayer"が定義されない
+            } else {
+            self.VotedCountArray = self.playerVotedDataArray.arrayForKey("votedPlayer")! as! [String]//前回までのプレイヤーの投票情報をVotedCountArrayに挿入
+                //初回以外はこっち。
+            }
+            //ここにてエラー発生か（１月９日）if文で対処
             
-            self.VotedCountArray.append("\(self.votedplayerItems[indexPath.row])")//プレイヤーの投票情報を追加
-            self.playerVotedDataArray.setObject("\(self.VotedCountArray)", forKey: "votedPlayer")//前回まで+今回の投票情報をplayerVotedDataArrayに保存
+            self.VotedCountArray.append("\(self.votedplayerItems[indexPath.row])")//プレイヤーの被投票者名を追加
+            print("投票が決定しました。対象は：\(self.votedplayerItems[indexPath.row])")
+            print("投票履歴：\(self.VotedCountArray)")
             
+            self.playerVotedDataArray.setObject([self.VotedCountArray], forKey: "votedPlayer")//前回まで+今回の投票情報をplayerVotedDataArrayに保存
+            /*
+            self.playerVotedDataArray.synchronize()
+            */
+            self.voteCheckArray = self.playerVotedDataArray.arrayForKey("votedPlayer")! as! [String]
+            print("NSDefaultに保存された投票履歴：\(self.voteCheckArray)")
 
             
             if self.myPlayerItems.count == 0 {
@@ -114,8 +146,12 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 let targetView = self.storyboard?.instantiateViewControllerWithIdentifier("prevoting")
                 self.presentViewController(targetView!, animated: true, completion: nil)
                 
+                /*
                 self.votedplayerItems.append("\(self.votingplayer)")
                 self.appdelegate.votercounterarray = self.myPlayerItems
+                */
+                //viewDidLoadで似た処理をしているので、コメントアウト（１月９日）
+                //defaultAction error:unexpectedly found nil while unwrapping an Optional value
                 
             }
             
