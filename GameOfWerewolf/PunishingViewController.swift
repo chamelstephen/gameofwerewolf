@@ -121,7 +121,7 @@ class PunishingViewController: UIViewController {
 
     @IBAction func punish() {
         if ope == 0 {
-            punishView?.hidden = false
+            punishView?.hidden = false//エフェクトの表示
             
         }
         

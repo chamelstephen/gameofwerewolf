@@ -19,6 +19,8 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var uranainumber: Int = 1
     var teruterunumber: Int = 0
     
+    var rolenumberArray: NSArray = []
+    
     var worksections: [String] = ["人狼", "市民", "てるてる"]
     var werewolfitems: [String] = ["人狼"]
     var citizenitems: [String] = ["村人", "怪盗", "占い師"]
@@ -39,6 +41,8 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         worktableview.dataSource=self
         worktableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "WorkCell")
         
+        /*
+        
         citizennumber = countplayer - (werewolfnumber + kaitounumber + uranainumber + teruterunumber)
         
         werewolfnumberitems = ["\(werewolfnumber)"]
@@ -47,6 +51,12 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         print("\(werewolfnumberitems[0])")
         print("\(teruterunumberitems[0])")
+        */
+        
+        var roleallnumberArray: NSArray = [[], [], [], [1,0,1,1,0], [1,1,1,1,0], [1,1,1,1,1], [2,1,1,1,1], [2,2,1,1,1], [2,3,1,1,1], [3,3,1,1,1], [3,4,1,1,1]]
+        
+        rolenumberArray = roleallnumberArray[countplayer] as! NSArray
+        
         
         let rolexib = UINib(nibName: "RolenumberTableViewCell", bundle: nil)
         worktableview.registerNib(rolexib, forCellReuseIdentifier: "WorkCell")
@@ -100,7 +110,9 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.roleLabel!.text = "\(teruteruitems[indexPath.row])"
         }
         
+        cell.workernumberlabel!.text = "\(rolenumberArray[indexPath.row])"//sectionごとにやる必要がある（１月２３日）
         
+        /*
         if indexPath.section == 0 {
             cell.workernumberlabel!.text = "\(werewolfnumberitems[indexPath.row])"
         } else if indexPath.section == 1 {
@@ -108,7 +120,7 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else if indexPath.section == 2 {
             cell.workernumberlabel!.text = "\(teruterunumberitems[indexPath.row])"
         }
-        
+        */
         return cell
     }
     
