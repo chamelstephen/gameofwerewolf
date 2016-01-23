@@ -25,6 +25,7 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var playerVotedDataArray = NSUserDefaults.standardUserDefaults()//VotedCountArrayを代入し、保存
     
     var VotedCountArray: [String] = []//ここに投票した相手の名前を入れる[①が投票した人,②が投票した人,,]
+    var VotedCountIntArray: [Int] = [0,0,0,0,0,0,0,0,0,0] //[①に入った票数,②に入った票数,,]
     
     var voteCheckArray: [String] = []//print用
     
@@ -38,6 +39,7 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         allPlayerItems = playerData3.arrayForKey("player")! as! [String]
+        playerData3.setObject(allPlayerItems, forKey: "allPlayers")//次の画面に継承
         print ("プレイヤー一覧：\(allPlayerItems)")
         votedplayerItems = allPlayerItems
         
@@ -111,7 +113,6 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let defaltAction: UIAlertAction = UIAlertAction(title: "はい", style: .Default, handler: {(action: UIAlertAction) -> Void in
             
-            //ここの処理でエラーが発生する（１月９日）
             
             //VotedCountDataArray = playerVotedDataArray.objectForKey("CountDataArray")! as! [String]//エラー解除？
             
@@ -121,14 +122,33 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
             } else {
             self.VotedCountArray = self.playerVotedDataArray.arrayForKey("votedPlayer")! as! [String]//前回までのプレイヤーの投票情報をVotedCountArrayに挿入
                 //初回以外はこっち。
+                
+            self.VotedCountIntArray = self.playerVotedDataArray.arrayForKey("votedIntPlayer")! as! [Int]//[Int]配列の保存情報をVotedCountIntArrayに入れる
             }
-            //ここにてエラー発生か（１月９日）if文で対処
             
             self.VotedCountArray.append("\(self.votedplayerItems[indexPath.row])")//プレイヤーの被投票者名を追加
             print("投票が決定しました。対象は：\(self.votedplayerItems[indexPath.row])")
             print("投票履歴：\(self.VotedCountArray)")
             
-            self.playerVotedDataArray.setObject([self.VotedCountArray], forKey: "votedPlayer")//前回まで+今回の投票情報をplayerVotedDataArrayに保存
+            self.playerVotedDataArray.setObject(self.VotedCountArray, forKey: "votedPlayer")//前回まで+今回の投票情報をplayerVotedDataArrayに保存
+            
+            //Int配列の投票情報をチェック
+            print("\(self.VotedCountIntArray)")
+            
+            //Int配列の投票情報を操作
+            let playernumbercount: Int = (self.allPlayerItems.count - self.myPlayerItems.count - 1)
+            if playernumbercount > indexPath.row {
+                let votenumbercount: Int = self.VotedCountIntArray[indexPath.row]
+                self.VotedCountIntArray[indexPath.row] = (votenumbercount + 1)
+            } else {
+                let votenumbercount: Int = self.VotedCountIntArray[indexPath.row+1]
+                self.VotedCountIntArray[indexPath.row+1] = (votenumbercount + 1)
+            }
+            
+            self.playerVotedDataArray.setObject(self.VotedCountIntArray, forKey: "votedIntPlayer")//Intの投票情報の配列を保存
+            print("\(self.VotedCountIntArray)")
+            print("\(self.playerVotedDataArray.arrayForKey("votedIntPlayer"))")
+            
             /*
             self.playerVotedDataArray.synchronize()
             */
