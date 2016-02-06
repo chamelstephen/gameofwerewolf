@@ -10,6 +10,7 @@ import UIKit
 
 class PunishingViewController: UIViewController {
     
+    
     var votedDataArray = [String]()//不要？
     
     var myVotedDataArray: [Int] = []//投票情報を前の画面から受け継ぐ
