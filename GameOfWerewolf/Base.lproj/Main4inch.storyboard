@@ -686,34 +686,22 @@
             </objects>
             <point key="canvasLocation" x="3717" y="272"/>
         </scene>
-        <!--Result Table View Controller-->
-        <scene sceneID="QJ8-ir-nNb">
+        <!--Navigation Controller-->
+        <scene sceneID="QBx-ph-5pG">
             <objects>
-                <tableViewController id="5Z0-v6-iyC" customClass="ResultTableViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EIG-C8-scs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JsU-Sl-qfR">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JsU-Sl-qfR" id="NA0-Cw-sgg">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="5Z0-v6-iyC" id="Ytl-4M-ISq"/>
-                            <outlet property="delegate" destination="5Z0-v6-iyC" id="Icl-jx-bcu"/>
-                        </connections>
-                    </tableView>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S23-Bp-m2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="ResultNavigation" id="c29-ha-ll0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iX8-4n-9df"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gLp-mT-vRg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7oE-Gv-Pqr" kind="relationship" relationship="rootViewController" id="AUZ-8a-bNu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QOq-Jl-dIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4662" y="252"/>
+            <point key="canvasLocation" x="4154" y="-503"/>
         </scene>
         <!--Total Result Table View Controller-->
         <scene sceneID="amC-RD-SKg">
@@ -772,19 +760,69 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLU-C7-eIR">
                                 <rect key="frame" x="40" y="164" width="240" height="240"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRB-Qg-rNp">
+                                <rect key="frame" x="0.0" y="450" width="320" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.2292549599" blue="0.1022405143" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="次へ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="finish" destination="SX3-T9-LoW" eventType="touchUpInside" id="0RZ-Tk-xgb"/>
+                                    <action selector="next" destination="Pbd-7g-CO9" eventType="touchUpInside" id="SrK-38-3MS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="InQ-2s-gFw"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="nextButton" destination="GRB-Qg-rNp" id="VyJ-TV-Ey6"/>
                         <outlet property="punishView" destination="qLU-C7-eIR" id="YYE-WE-5hT"/>
                         <outlet property="punishingplayerLabel" destination="YN8-Bp-o3I" id="mz7-2q-L3y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jb0-F2-fKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4222" y="272"/>
+            <point key="canvasLocation" x="4096" y="272"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="Hr9-p7-CaJ">
+            <objects>
+                <viewController id="7oE-Gv-Pqr" customClass="ResultViewController" customModule="OneNight" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cM4-1X-bj1"/>
+                        <viewControllerLayoutGuide type="bottom" id="a66-58-eaP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="689-af-4Yc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M1l-zs-fra">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="DSn-zJ-P4N">
+                                        <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DSn-zJ-P4N" id="o0H-vM-mGK">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="H8T-ju-KU1"/>
+                    <connections>
+                        <outlet property="mytableview" destination="M1l-zs-fra" id="ekG-NJ-Fxt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dYL-Nk-Fv7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4538" y="272"/>
         </scene>
         <!--Finish Devate View Controller-->
         <scene sceneID="lls-wo-Dcw">
@@ -798,22 +836,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="処刑のお時間です" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xcj-uL-Uq9">
+                                <rect key="frame" x="10" y="269" width="300" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.2292549599" blue="0.1022405143" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fB1-iP-vUz">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <state key="normal" title="Button">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cK8-aw-ecz">
-                                <rect key="frame" x="10" y="225" width="300" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="処刑のお時間です">
-                                    <color key="titleColor" red="1" green="0.2292549599" blue="0.1022405143" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
-                                    <segue destination="ghM-ag-Svp" kind="push" id="154-lu-hGV"/>
+                                    <segue destination="ghM-ag-Svp" kind="push" id="ohq-Xh-WwQ"/>
                                 </connections>
                             </button>
                         </subviews>

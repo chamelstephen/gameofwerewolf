@@ -10,7 +10,6 @@ import UIKit
 
 class PunishingViewController: UIViewController {
     
-    
     var votedDataArray = [String]()//不要？
     
     var myVotedDataArray: [Int] = []//投票情報を前の画面から受け継ぐ
@@ -23,8 +22,8 @@ class PunishingViewController: UIViewController {
     var ope: Int = 0//平和村かどうか判別
     
     @IBOutlet var punishingplayerLabel: UILabel?//処刑者を表示
-    
     @IBOutlet var punishView: UIImageView?//処刑エフェクトを表示
+    @IBOutlet var nextButton: UIButton?//画面遷移に使用
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +31,7 @@ class PunishingViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)//navigationbarを非表示
+        nextButton?.hidden = true//"次へ"ボタンを非表示
         
         myVotedDataArray = saveVotedData.arrayForKey("votedIntPlayer")! as! [Int]//nsuserdefaultsからarrayに投票情報を代入
         print("投票結果：\(myVotedDataArray)")//確認
@@ -125,6 +125,13 @@ class PunishingViewController: UIViewController {
             punishView?.hidden = false//エフェクトの表示
             
         }
+        
+        nextButton?.hidden = false//ボタンの表示
+    }
+    
+    @IBAction func next(){
+        let targetView: AnyObject = self.storyboard!.instantiateViewControllerWithIdentifier( "ResultNavigation" )
+        self.presentViewController( targetView as! UINavigationController, animated: true, completion: nil)
         
     }
 }
