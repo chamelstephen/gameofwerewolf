@@ -26,14 +26,19 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
     */
     //不使用のためコメントアウト（２月６日）
     
-    var rolenumberArray: NSArray = []//役職ごとの人数を入れる
+    var rolenumberArray: [Int] = []//役職ごとの人数を入れる
     
     var worksections: [String] = ["人狼", "市民", "てるてる"]
     var werewolfitems: [String] = ["人狼"]
     var citizenitems: [String] = ["村人", "怪盗", "占い師"]
     var teruteruitems: [String] = ["てるてる"]
     
+    var allroleitems: [String] = ["人狼", "村人", "怪盗", "占い師", "てるてる"]
+    
     let saveData = NSUserDefaults.standardUserDefaults()//諸々のNSUserDefaults
+    
+    var activeroleArray: [String] = []//アクティブな役職＊人数を表示
+    var roleofplayerArray: [String] = []//ランダムに役職を並び替え、indexで役職を決定
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +50,9 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         worktableview.dataSource=self
         worktableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "WorkCell")
         
-        var roleallnumberArray: NSArray = [[], [], [], [1,0,1,1,0], [1,1,1,1,0], [1,1,1,1,1], [2,1,1,1,1], [2,2,1,1,1], [2,3,1,1,1], [3,3,1,1,1], [3,4,1,1,1]]
+        let roleallnumberArray: NSArray = [[1,0,1,1,0], [1,1,1,1,0], [1,1,1,1,1], [2,1,1,1,1], [2,2,1,1,1], [2,3,1,1,1], [3,3,1,1,1], [3,4,1,1,1]]
         
-        rolenumberArray = roleallnumberArray[countplayer] as! NSArray
+        rolenumberArray = roleallnumberArray[countplayer - 3] as! [Int]
         saveData.setObject(rolenumberArray, forKey: "RoleData")//役職の人数を保存
         
         
@@ -116,5 +121,83 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    
+    @IBAction func role(){
+        var copyrolenumberArray: [Int] = rolenumberArray
+        
+        while rolenumberArray[0] > 0 {
+            activeroleArray.append("人狼")
+            rolenumberArray[0] = (rolenumberArray[0] - 1)
+        }
+        
+        while rolenumberArray[1] > 0 {
+            activeroleArray.append("村人")
+            rolenumberArray[1] = (rolenumberArray[1] - 1)
+        }
+        
+        while rolenumberArray[2] > 0 {
+            activeroleArray.append("怪盗")
+            rolenumberArray[2] = (rolenumberArray[2] - 1)
+        }
+        
+        while rolenumberArray[3] > 0 {
+            activeroleArray.append("占い師")
+            rolenumberArray[3] = (rolenumberArray[3] - 1)
+        }
+        
+        while rolenumberArray[4] > 0 {
+            activeroleArray.append("てるてる")
+            rolenumberArray[4] = (rolenumberArray[4] - 1)
+        }
+        //activeroleArrayに役職＊人数を挿入
+        print("長い方:\(activeroleArray)")
+        
+        saveData.setObject(activeroleArray, forKey: "ActiveRole")
+        
+        /*
+        var anotheractiveroleArray: [String] = []
+        //var copyrolenumberArray: [Int] = rolenumberArray
+        var copyallroleitems: [String] = allroleitems
+        
+        print("\(copyrolenumberArray)")
+        
+        while copyrolenumberArray.count != 0 /*役職ごとの人数が示された配列のコピーが要素数0になるまで繰り返される*/ {
+            while copyrolenumberArray[0] != 0 /*[0]が0になるまで繰り返される*/ {
+                print("\(copyallroleitems)")
+                anotheractiveroleArray.append(copyallroleitems[0])//役職＊人数の配列に役職を挿入
+                print("\(anotheractiveroleArray)")
+                let opeopenumber: Int = copyrolenumberArray[0]
+                copyrolenumberArray[0] = opeopenumber - 1//役職が1回配列に挿入されたので、1減らす
+                print("\(copyrolenumberArray)")
+            }
+            copyrolenumberArray.removeFirst()//[0]の役職が配列に挿入し終わったので消去
+            print("\(copyrolenumberArray)")
+            copyallroleitems.removeFirst()//[0]の役職が配列に挿入し終わったので消去
+            print("\(copyallroleitems)")
+            //次の役職に続く
+            //ただし、次の役職(さらに次の次の役職が)の人数が0の場合・・・
+            while copyrolenumberArray[0] == 0 && copyrolenumberArray.isEmpty == false {
+                copyrolenumberArray.removeFirst()
+                copyallroleitems.removeFirst()
+                print("\(copyrolenumberArray)")
+                print("\(copyallroleitems)")
+            }
+        }
+        print("スマートな方:\(anotheractiveroleArray)")
+        */
+        //copyrolenumberArray==[],copyallroleitems==[]の時、copyrolenumberArray[0] == 0のところで落ちる(2月6日)
+        
+        var copycountplayer: Int = countplayer
+        while activeroleArray.count != 0 {
+            let random = Int(arc4random_uniform(UInt32(copycountplayer)))
+            
+            roleofplayerArray.append(activeroleArray[random])
+            activeroleArray.removeAtIndex(random)
+            copycountplayer = copycountplayer - 1
+        }
+        //ランダムに役職を並び替える
+        
+        print("\(roleofplayerArray)")//インデックスのプレイヤーがその役職
+        saveData.setObject(roleofplayerArray, forKey: "RolePlayerData")//nsuserdefaultsに保存
+        
+    }
 }

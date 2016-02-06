@@ -13,6 +13,7 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var voteLabel: UILabel!
+    @IBOutlet weak var myImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

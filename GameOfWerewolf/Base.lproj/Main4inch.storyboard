@@ -989,6 +989,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="role" destination="zNd-rX-ueU" eventType="touchUpInside" id="2cm-b2-VXy"/>
                                     <segue destination="kip-UR-Kiv" kind="modal" id="wEz-PZ-tGP"/>
                                 </connections>
                             </button>
