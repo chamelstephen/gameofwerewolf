@@ -68,9 +68,6 @@ class PunishingViewController: UIViewController {
             mypunishingString = "平和村でした〜〜"
             ope = 1
             
-        } else if VotedDataMaxIndexArray.count == 5 {
-            mypunishingString = "\(myPlayerItems[VotedDataMaxIndexArray[0]]),\(myPlayerItems[VotedDataMaxIndexArray[1]]),\(myPlayerItems[VotedDataMaxIndexArray[2]]),\(myPlayerItems[VotedDataMaxIndexArray[3]]),\(myPlayerItems[VotedDataMaxIndexArray[4]])"
-            
         } else if VotedDataMaxIndexArray.count == 4 {
             mypunishingString = "\(myPlayerItems[VotedDataMaxIndexArray[0]]),\(myPlayerItems[VotedDataMaxIndexArray[1]]),\(myPlayerItems[VotedDataMaxIndexArray[2]]),\(myPlayerItems[VotedDataMaxIndexArray[3]])"
             
@@ -85,6 +82,8 @@ class PunishingViewController: UIViewController {
         }
         
         punishingplayerLabel?.text = mypunishingString
+        
+        saveVotedData.setObject(VotedDataMaxIndexArray, forKey: "PunishedPlayerIndex")
         
         punishView?.hidden = true
         punishView?.image = UIImage(named: "punishview.png")

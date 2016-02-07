@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="役職" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJ0-kR-qKj">
-                        <rect key="frame" x="46" y="51" width="42" height="12"/>
+                        <rect key="frame" x="46" y="51" width="120" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -35,9 +35,13 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mRt-bg-jJP">
+                        <rect key="frame" x="3" y="22" width="40" height="40"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="diedImageView" destination="mRt-bg-jJP" id="8MS-yE-e0K"/>
                 <outlet property="myImageView" destination="Syz-SB-ktF" id="9Zu-Sw-DoM"/>
                 <outlet property="nameLabel" destination="TU7-OY-nVS" id="Dh4-WJ-r0W"/>
                 <outlet property="roleLabel" destination="MJ0-kR-qKj" id="qTm-FZ-DOY"/>

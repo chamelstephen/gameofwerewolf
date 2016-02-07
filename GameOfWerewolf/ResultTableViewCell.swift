@@ -14,10 +14,13 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var voteLabel: UILabel!
     @IBOutlet weak var myImageView: UIImageView!
+    @IBOutlet weak var diedImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        diedImageView?.image = UIImage(named: "punishview.png")
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
