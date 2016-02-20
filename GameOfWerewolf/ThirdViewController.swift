@@ -14,7 +14,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var playerset : UIButton!
     
     // Tableで使用する配列を定義する.
-    var myPlayerItems: NSMutableArray = ["プレイヤー１", "プレーヤー２", "プレイヤー３"]
+    //var myPlayerItems: NSMutableArray = ["プレイヤー1", "プレーヤー2", "プレイヤー3"]
+    var myPlayerArray: [String] = ["プレイヤー1", "プレイヤー2", "プレイヤー3"]
     
     // Sectionで使用する配列を定義する.
     var myPlayerSections: [String] = ["Players"]
@@ -40,14 +41,16 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var width: CGFloat = self.view.bounds.width
         var height: CGFloat = self.view.bounds.height
         
-        print("プレイヤー人数:\(myPlayerItems.count)")
+        //print("プレイヤー人数:\(myPlayerItems.count)")
+        print("プレイヤー人数:\(myPlayerArray.count)")
         
         let playerxib = UINib(nibName: "PlayerItemsTableViewCell", bundle: nil)
         mytableview.registerNib(playerxib, forCellReuseIdentifier: "MyCell")
         
-        let playerdata = NSUserDefaults.standardUserDefaults()
+        //let playerdata = NSUserDefaults.standardUserDefaults()
         
-        print("\(myPlayerItems)")
+        //print("\(myPlayerItems)")
+        print("\(myPlayerArray)")
         
     }
     
@@ -89,7 +92,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     テーブルに表示する配列の総数を返す.
     */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myPlayerItems.count
+        //return myPlayerItems.count
+        return myPlayerArray.count
         
     }
     
@@ -105,7 +109,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.NameTextField!.delegate = self
         cell.NameTextField!.borderStyle = UITextBorderStyle.RoundedRect
         cell.NameTextField!.returnKeyType = UIReturnKeyType.Done
-        cell.NameTextField!.text = "\(myPlayerItems[indexPath.row])"
+        //cell.NameTextField!.text = "\(myPlayerItems[indexPath.row])"
+        cell.NameTextField!.text = "\(myPlayerArray[indexPath.row])"
         cell.NameTextField!.layer.borderColor = UIColor.blackColor().CGColor
         //文字数制限
         
@@ -120,9 +125,11 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        myPlayerItems[textField.tag] = "\(textField.text!)"
+        //myPlayerItems[textField.tag] = "\(textField.text!)"
+        myPlayerArray[textField.tag] = "\(textField.text!)"
         
-        print("\(myPlayerItems)")
+        //print("\(myPlayerItems)")
+        print("\(myPlayerArray)")
         
         return
     }
@@ -133,9 +140,11 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //配列myPlayerItemsに入力したテキストを入れかえる
         
         //selectedのcellを把握＞textをmyplayeritemsに代入して入れ替え
-        myPlayerItems[textField.tag] = "\(textField.text!)"
+        //myPlayerItems[textField.tag] = "\(textField.text!)"
+        myPlayerArray[textField.tag] = "\(textField.text!)"
         
-        print("\(myPlayerItems)")
+        //print("\(myPlayerItems)")
+        print("\(myPlayerArray)")
         
         return true
         
@@ -177,7 +186,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // myItemsに追加.
         
-        myPlayerItems.addObject("プレイヤー")
+        //myPlayerItems.addObject("プレイヤー")
+        myPlayerArray.append("プレイヤー")
         
         // TableViewを再読み込み.
         mytableview.reloadData()
@@ -194,7 +204,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
             print("削除")
             
             // 指定されたセルのオブジェクトをmyItemsから削除する.
-            myPlayerItems.removeObjectAtIndex(indexPath.row)
+            //myPlayerItems.removeObjectAtIndex(indexPath.row)
+            myPlayerArray.removeAtIndex(indexPath.row)
             
             // TableViewを再読み込み.
             mytableview.reloadData()
@@ -207,7 +218,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let delete = UITableViewRowAction(style: .Default, title: "削除") {
             (action, indexPath) in
             
-            self.myPlayerItems.removeObjectAtIndex(indexPath.row)
+            //self.myPlayerItems.removeObjectAtIndex(indexPath.row)
+            self.myPlayerArray.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
         
@@ -226,26 +238,38 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        /*
         let tmp: AnyObject = myPlayerItems[sourceIndexPath.row]
         myPlayerItems.removeObjectAtIndex(sourceIndexPath.row)
         myPlayerItems.insertObject(tmp, atIndex: destinationIndexPath.row)
+        */
+        
+        let tmpString: String = myPlayerArray[sourceIndexPath.row]
+        myPlayerArray.removeAtIndex(sourceIndexPath.row)
+        myPlayerArray.insert(tmpString, atIndex: destinationIndexPath.row)
         
         mytableview.reloadData()
     }
     
     @IBAction func next()  {
-        print("\(myPlayerItems)")
+        //print("myPlayerItems:\(myPlayerItems)")
+        print("myPlayerArray:\(myPlayerArray)")
         
-        appdelegate.arraydefault = myPlayerItems
-        appdelegate.playerarray = myPlayerItems
+        appdelegate.arraydefault = myPlayerArray
+        //appdelegate.playerarray = myPlayerArray
         
-        print("プレイヤー人数:\(myPlayerItems.count)")
+        //appdelegate.arraydefault = myPlayerItems as! [String]
+        //appdelegate.playerarray = myPlayerItems as! [String]
         
-        print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
+        //print("プレイヤー人数:\(myPlayerItems.count)")
+        print("プレイヤー人数:\(myPlayerArray.count)")
+        
+        //print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
         print("appdelegate.arraydefault:\(appdelegate.arraydefault.count)")
         
         let playerData = NSUserDefaults.standardUserDefaults()
-        playerData.setObject( (myPlayerItems), forKey: "player")
+        playerData.setObject(myPlayerArray, forKey: "player")
+        //playerData.setObject(myPlayerItems, forKey: "player")
         
         /*
         let playervotedDataArray = NSUserDefaults.standardUserDefaults()
@@ -271,7 +295,7 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         
-        if myPlayerItems.count < 11 && myPlayerItems.count > 2 {
+        if /*myPlayerItems.count < 11 && myPlayerItems.count > 2*/ myPlayerArray.count < 11 && myPlayerArray.count > 2 {
             performSegueWithIdentifier("toyakushoku", sender: nil)
         } else {
             let alert = UIAlertController(title: "注意", message: "プレイヤーの数を３以上１０以下にしてください", preferredStyle: .Alert)
@@ -290,7 +314,8 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let workView : ForthViewController = segue.destinationViewController as! ForthViewController
             // secondView（バンドルされた変数）に受け取り用の変数を引数とし_paramを渡す（_paramには渡したい値）
             // この時SecondViewControllerにて受け取る同型の変数を用意しておかないとエラーになる
-            workView.countplayer = myPlayerItems.count
+            workView.countplayer = myPlayerArray.count
+            //workView.countplayer = myPlayerItems.count
         }
     }
     

@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var arraydefault: NSMutableArray = []
-    var playerarray: NSMutableArray = []
+    var arraydefault: [String] = []
+    var playerarray: [String] = []
     
     var voterarray: [String] = []
     

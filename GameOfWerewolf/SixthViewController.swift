@@ -13,8 +13,9 @@ class SixthViewController: UIViewController {
     @IBOutlet var faceImageView: UIImageView!
     @IBOutlet var nameLabelView: UILabel!
     
-    var playername: NSString = ""
+    var playername: String = ""
     
+    var savedData = NSUserDefaults.standardUserDefaults()
     
     var appdelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -24,7 +25,7 @@ class SixthViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        playername = appdelegate.arraydefault[0] as! NSString
+        playername = appdelegate.arraydefault[0]
         print("プレイヤー名:\(playername)")
         
         nameLabelView.text = "\(playername)さん"
@@ -60,7 +61,7 @@ class SixthViewController: UIViewController {
             let targetView = self.storyboard?.instantiateViewControllerWithIdentifier("rolecheck")
             targetView!.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
             self.presentViewController(targetView!, animated: true, completion: nil)
-            
+            //くるっと回転する画面遷移
             
             print("オッケー")
         })

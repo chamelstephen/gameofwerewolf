@@ -24,7 +24,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var allroleitems: [String] = ["人狼", "村人", "怪盗", "占い師", "てるてる"]
     //var activeroleArray: [String] = []
     
-    var werewolfteamArray: [String] = []
+    var werewolfteamArray: [String] = []//人狼チームのメンバーを入れる
     var villagerteamArray: [String] = []
     var teruteruteamArray: [String] = []
     var villagerteamroleArray: [String] = []
@@ -32,6 +32,10 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var werewolfteamVoteArray: [String] = []
     var villagerteamVoteArray: [String] = []
     var teruteruteamVoteArray: [String] = []
+    
+    var werewolfteamRoleArray: [String] = []
+    var villagerteamRoleArray: [String] = []
+    var teruteruteamRoleArray: [String] = []
     
     var votedDataArray: [String] = []
     
@@ -52,9 +56,17 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         mytableview.dataSource = self
         mytableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ResultCell")
         
+        var changingrole: [String] = saveData.arrayForKey("ChangingofRole")! as! [String]
+        if changingrole.isEmpty == true {
+            print("役職変更なし")
+        } else {
+            print("役職変更あり")
+        }
+        
         myPlayerItems = saveData.arrayForKey("allPlayers")! as! [String]//プレイヤーの名前を取得して[String]に代入
         rolenumberArray = saveData.arrayForKey("RoleData")! as! [Int] //役職の人数を取得してNSArrayに代入
-        roleofplayerArray = saveData.arrayForKey("RolePlayerData")! as! [String]//プレイヤーの役職を代入
+        //roleofplayerArray = saveData.arrayForKey("RolePlayerData")! as! [String]//プレイヤーの役職を代入
+        roleofplayerArray = saveData.arrayForKey("ChangedRoleArray")! as! [String]
         votedDataArray = saveData.arrayForKey("votedPlayer")! as! [String]//投票情報
         print("プレイヤー:\(myPlayerItems)")
         print("役職の人数:\(rolenumberArray)")
@@ -131,19 +143,12 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 contnumber += 1
             }
             
-            if punishedvillager.count > punishedwerewolf.count {
-                winingLabel?.text = "WereWolf Team Won!!"
-            } else if punishedvillager.count < punishedwerewolf.count {
+            if punishedwerewolf.count > 0 {
                 winingLabel?.text = "Villager Team Won!!"
             } else {
-                if villagerteamArray.count - punishedvillager.count > werewolfteamArray.count - punishedwerewolf.count {
-                    winingLabel?.text = "Villager Team Won!!"
-                } else if villagerteamArray.count - punishedvillager.count < werewolfteamArray.count - punishedwerewolf.count {
-                    winingLabel?.text = "Werewolf Team Won!!"
-                } else {
-                    winingLabel?.text = "Werewolf Team Won!!"
-                }
+                winingLabel?.text = "WereWolf Team Won!!"
             }
+            //投票放棄時の判定が必要
         }
         print(winingLabel.text)
         
@@ -197,6 +202,50 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         print("\(diedimagedisplay)")
         
+        //チームごとの役職配列をつくる
+        //人狼
+        var werewolfteamCount: Int = werewolfteamArray.count
+        while werewolfteamCount != 0 {
+            werewolfteamRoleArray.append("人狼")
+            werewolfteamCount -= 1
+        }
+        print("人狼チームの役職:\(werewolfteamRoleArray)")
+        print("人狼チームの人数:\(werewolfteamArray.count)")
+        
+        //villagerteamroleArrayが既存
+        //てるてる
+        if teruteruteamArray.isEmpty == false {
+            teruteruteamRoleArray.append("てるてる")
+        }
+        
+        //役職変更を可視化
+        if changingrole.isEmpty == true {
+            print("役職変更なし")
+        } else {
+            print("役職変更あり")
+            let changedrole: String = changingrole[2]//入れ替わった役職
+            //changingrole.removeAtIndex(2)
+            
+            let firstkaitouguy: String = changingrole[3]//最初怪盗だった人間
+            
+            var searchindex: Int = 0
+            //以下、変更後のチーム先から探す
+            //入れ替わられたプレイヤーは怪盗
+            searchindex = villagerteamroleArray.indexOf("怪盗")!
+            villagerteamArray[searchindex] = changingrole[1]//"最初の役職→怪盗"と表示
+            
+            if changedrole == "人狼" {
+                searchindex = werewolfteamArray.indexOf(firstkaitouguy)!
+                werewolfteamRoleArray[searchindex] = changingrole[0]
+            } else if changedrole == "てるてる" {
+                searchindex = teruteruteamArray.indexOf(firstkaitouguy)!
+                teruteruteamRoleArray[searchindex] = changingrole[0]
+            } else {
+                searchindex = villagerteamArray.indexOf(firstkaitouguy)!
+                villagerteamRoleArray[searchindex] = changingrole[0]
+            }//"怪盗→変更後の役職"と表示
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -243,11 +292,11 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCellWithIdentifier("ResultCell", forIndexPath: indexPath) as! ResultTableViewCell
         
         if indexPath.section == 0 {
-            cell.roleLabel!.text = "役職:\(allroleitems[0])"
+            cell.roleLabel!.text = "役職:\(werewolfteamRoleArray[indexPath.row])"
         } else if indexPath.section == 1 {
-            cell.roleLabel!.text = "役職:\(villagerteamroleArray[indexPath.row])"
+            cell.roleLabel!.text = "役職:\(villagerteamroleArray[indexPath.row])"//villagerteamroleArrayのインデックスが対応しているか確認
         } else if indexPath.section == 2 {
-            cell.roleLabel!.text = "役職:\(allroleitems[4])"
+            cell.roleLabel!.text = "役職:\(teruteruteamRoleArray[0])"
         }
         //役職名を表示
         
@@ -279,5 +328,11 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         return cell
+    }
+    
+    @IBAction func backtostart() {
+        let targetView = self.storyboard?.instantiateViewControllerWithIdentifier("VeryFirstTitle")
+        targetView!.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        self.presentViewController(targetView!, animated: true, completion: nil)
     }
 }

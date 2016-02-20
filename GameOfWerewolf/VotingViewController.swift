@@ -69,6 +69,8 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
         votedplayerItems.removeAtIndex((allPlayerItems.count)-(myPlayerItems.count)-1)//([0]=votingplayer)投票しているプレイヤーを削除
         //votedplayerItemsの削除対象はmyPlayerItems.countの数から割り出せばよい。[allplayerItems.count-myplayerItems.count-1]番目を削除するのだ。
         
+        //votedplayerItems.append("投票放棄")//投票先確認メッセージ、投票先を表示する配列・・・
+        
         appdelegate.votercounterarray = myPlayerItems//次回のmyPlayerItemsには一人減らされた状態で挿入される。
         
         if myPlayerItems.count == 0 {
@@ -171,7 +173,6 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.appdelegate.votercounterarray = self.myPlayerItems
                 */
                 //viewDidLoadで似た処理をしているので、コメントアウト（１月９日）
-                //defaultAction error:unexpectedly found nil while unwrapping an Optional value
                 
             }
             
@@ -191,8 +192,8 @@ class VotingViewController: UIViewController, UITableViewDelegate, UITableViewDa
     */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("tableviewcellの総数=\(votedplayerItems.count)")
-        return (votedplayerItems.count)
+        print("tableviewcellの総数=\(votedplayerItems.count+1)(不要→投票放棄が必要)")
+        return (votedplayerItems.count/*+1*/)
         
     }
     

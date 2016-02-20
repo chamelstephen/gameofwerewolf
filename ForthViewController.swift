@@ -26,6 +26,7 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
     */
     //不使用のためコメントアウト（２月６日）
     
+    var rolenumberArrayPlusUnchosen: [Int] = []//役職ごとの人数を入れる+中置き
     var rolenumberArray: [Int] = []//役職ごとの人数を入れる
     
     var worksections: [String] = ["人狼", "市民", "てるてる"]
@@ -38,7 +39,7 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let saveData = NSUserDefaults.standardUserDefaults()//諸々のNSUserDefaults
     
     var activeroleArray: [String] = []//アクティブな役職＊人数を表示
-    var roleofplayerArray: [String] = []//ランダムに役職を並び替え、indexで役職を決定
+    var roleofplayerArray: [String] = []//ランダムに役職を並び替え、indexで役職を決定　[プレイヤー１の役職, プレイヤー２の役職,・・・]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +51,77 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         worktableview.dataSource=self
         worktableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "WorkCell")
         
-        let roleallnumberArray: NSArray = [[1,0,1,1,0], [1,1,1,1,0], [1,1,1,1,1], [2,1,1,1,1], [2,2,1,1,1], [2,3,1,1,1], [3,3,1,1,1], [3,4,1,1,1]]
+        //let roleallnumberArray: NSArray = [[1,0,1,1,0], [1,1,1,1,0], [1,1,1,1,1], [2,1,1,1,1], [2,2,1,1,1], [2,3,1,1,1], [3,3,1,1,1], [3,4,1,1,1]]//中置き(2)を含める必要がある。→人狼は最低1人必要
+        let roleallnumberArrayplus2: NSArray = [[2,0,1,1,1], [2,1,1,1,1], [2,2,1,1,1], [3,2,1,1,1], [3,2,1,2,1], [3,3,1,2,1], [4,3,1,2,1], [4,3,1,3,1]]
         
-        rolenumberArray = roleallnumberArray[countplayer - 3] as! [Int]
+        
+        rolenumberArrayPlusUnchosen = roleallnumberArrayplus2[countplayer - 3] as! [Int]
+        rolenumberArray = rolenumberArrayPlusUnchosen
+        
+        print("役職人数+中置き==\(rolenumberArrayPlusUnchosen)")
+        
+        if countplayer < 6 {
+            //rolenumberArray[0] -= 1//人狼が0人になってはいけない?
+            
+            var random: Int = Int(arc4random_uniform(UInt32(5)))
+            while rolenumberArray[random] == 0 {
+                random = Int(arc4random_uniform(UInt32(5)))//0~4をランダムで選ぶ
+            }
+            rolenumberArray[random] -= 1
+            var nakaokirole: [String] = []//中置きの役職を入れる配列
+            nakaokirole.append(allroleitems[random])
+            
+            random = Int(arc4random_uniform(UInt32(5)))
+            while rolenumberArray[random] == 0 {
+                random = Int(arc4random_uniform(UInt32(5)))
+            }
+            rolenumberArray[random] -= 1
+            nakaokirole.append(allroleitems[random])
+            saveData.setObject(nakaokirole, forKey: "NakaOkiRole")//中置きの配列を保存
+            
+            //rolenumberArray[0] += 1//人狼の人数を元に戻す
+            print("nakaokirole==\(nakaokirole)")
+    
+        } else {
+            var random: Int = Int(arc4random_uniform(UInt32(5)))
+            while rolenumberArray[random] == 0 {
+                random = Int(arc4random_uniform(UInt32(5)))//0~4をランダムで選ぶ
+            }
+            rolenumberArray[random] -= 1
+            var nakaokirole: [String] = []//中置きの役職を入れる配列
+            nakaokirole.append(allroleitems[random])
+            
+            random = Int(arc4random_uniform(UInt32(5)))
+            while rolenumberArray[random] == 0 {
+                random = Int(arc4random_uniform(UInt32(5)))
+            }
+            rolenumberArray[random] -= 1
+            nakaokirole.append(allroleitems[random])
+            saveData.setObject(nakaokirole, forKey: "NakaOkiRole")//中置きの配列を保存
+            
+            print("nakaokirole==\(nakaokirole)")
+        }
+        //中置きchoiceの処理
         saveData.setObject(rolenumberArray, forKey: "RoleData")//役職の人数を保存
+        print("rolenumberArray==\(rolenumberArray)")
         
+        //平和村判定が必要!!
+        /*
+        【村人側の勝利】人狼を１人でも吊れば村人側の勝利です。
+        　村に生きている人狼がいない場合は誰も吊ってはいけません
+        【人狼側の勝利】人狼側が誰も吊られなければ人狼側の勝利です。
+        　怪盗と役職を交換されていた場合は人狼を吊らなければいけません(村人側になります)
+        */
+        
+        /*
+        人狼が処刑されていれば人間チームの勝ち。人間が処刑されれば人狼チームの勝ちです。
+        2:2の同数の場合は両方が処刑されます。一人でも人狼が処刑されれば人間チームの勝ちです。
+        投票が1票ずつバラバラの場合は誰も処刑されません。その時は一人でも人狼が残っていれば人狼チームの勝ちです。
+        */
+        
+        /*
+        人狼がいない時→投票放棄
+        */
         
         let rolexib = UINib(nibName: "RolenumberTableViewCell", bundle: nil)
         worktableview.registerNib(rolexib, forCellReuseIdentifier: "WorkCell")
@@ -110,11 +177,11 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         
         if indexPath.section == 0 {
-            cell.workernumberlabel!.text = "\(rolenumberArray[indexPath.row])"
+            cell.workernumberlabel!.text = "\(rolenumberArrayPlusUnchosen[indexPath.row])"
         } else if indexPath.section == 1 {
-            cell.workernumberlabel!.text = "\(rolenumberArray[indexPath.row + 1])"//indexPath.rowはsectionごとに数えられるため
+            cell.workernumberlabel!.text = "\(rolenumberArrayPlusUnchosen[indexPath.row + 1])"//indexPath.rowはsectionごとに数えられるため
         } else if indexPath.section == 2 {
-            cell.workernumberlabel!.text = "\(rolenumberArray[indexPath.row + 4])"
+            cell.workernumberlabel!.text = "\(rolenumberArrayPlusUnchosen[indexPath.row + 4])"
         }
         //人数を表示
         
@@ -149,7 +216,7 @@ class ForthViewController: UIViewController, UITableViewDelegate, UITableViewDat
             rolenumberArray[4] = (rolenumberArray[4] - 1)
         }
         //activeroleArrayに役職＊人数を挿入
-        print("長い方:\(activeroleArray)")
+        print("長い方:\(activeroleArray)")//[人狼, 人狼,・・・]
         
         saveData.setObject(activeroleArray, forKey: "ActiveRole")
         
