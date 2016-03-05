@@ -112,9 +112,9 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             punishedPlayer.append(myPlayerItems[copypunishedData[0]])
             copypunishedData.removeFirst()
         }
-        print("\(punishedPlayer)")
+        print("処刑された人:\(punishedPlayer)")
         //punishedPlayerに処刑された人のプレイヤー名の配列を作成
-        print(myPlayerItems)
+        print("プレイヤー:\(myPlayerItems)")
         
         //punishedPlayerにてるてるのプレイヤーがいるか判定する関数をつくりまーす（2月6日)
         var teruteruope: Int = 0
