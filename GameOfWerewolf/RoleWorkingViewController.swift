@@ -58,6 +58,7 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
         myRoleItems = savedData.arrayForKey("RolePlayerData")! as! [String]
         myPlayerItems = savedData.arrayForKey("player")! as! [String]
         
+        print("myRoleItems:\(myRoleItems)")
         //このプレイヤーのインデックスを取得したい
         let index = myPlayerItems.indexOf(NameString)
         print("このプレイヤーのインデックスは\(index)")
@@ -166,6 +167,16 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
                     
                     self.savedData.setObject( displaytext, forKey: "displayTextRoleWorkingTORoleChanging")
                     
+                    /*
+                    確認用
+                    */
+                    if self.myRoleItems.contains("怪盗") == false {
+                        let changingrole: [String] = []
+                        print("changingrole:\(changingrole)")
+                        self.savedData.setObject(changingrole, forKey: "ChangingofRole")
+                        let checkingArray: [String] = self.savedData.arrayForKey("ChangingofRole") as! [String]
+                        print("checkingArray:\(checkingArray)")
+                    }
                     
                     let AlertUranai: UIAlertController = UIAlertController(title: "占いの結果", message: "結果は\(displaytext)でした", preferredStyle: UIAlertControllerStyle.Alert)
                     
@@ -245,7 +256,15 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
                         let changingrole: [String] = [changeString, changeString2, displaytext, self.NameString, self.myKaitouItems[indexPath.row]]//myKaitouItems[indexPath.row]は変更後、怪盗
                         print("changingrole:\(changingrole)")
                         self.savedData.setObject(changingrole, forKey: "ChangingofRole")
+                    } else {
+                        //役職が変更にならなかったとき
+                        let changingrole: [String] = []
+                        print("changingrole:\(changingrole)")
+                        self.savedData.setObject(changingrole, forKey: "ChangingofRole")
                     }
+                    let checkingArray: [String] = self.savedData.arrayForKey("ChangingofRole") as! [String]
+                    print("checkingArray:\(checkingArray)")
+                    
                     self.savedData.setObject(self.myRoleItems, forKey: "ChangedRoleArray")//変更後の役職配列を保存
                     
                     self.savedData.setObject( displaytext, forKey: "displayTextRoleWorkingTORoleChanging")
@@ -326,6 +345,17 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func next() {
+        /*
+        確認用
+        */
+        if self.myRoleItems.contains("怪盗") == false {
+            let changingrole: [String] = []
+            print("changingrole:\(changingrole)")
+            self.savedData.setObject(changingrole, forKey: "ChangingofRole")
+            let checkingArray: [String] = self.savedData.arrayForKey("ChangingofRole") as! [String]
+            print("checkingArray:\(checkingArray)")
+        }
+        
         if segueoperation == true {
             let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" )
             self.presentViewController( targetView, animated: true, completion: nil)

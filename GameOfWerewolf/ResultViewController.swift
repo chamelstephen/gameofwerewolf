@@ -57,8 +57,8 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         mytableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ResultCell")
         
         var changingrole: [String] = saveData.arrayForKey("ChangingofRole")! as! [String]
-        
         print("changingrole: \(changingrole)")
+        
         if changingrole.count == 0 {
             print("役職変更なし")
         } else {
@@ -67,12 +67,12 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         myPlayerItems = saveData.arrayForKey("allPlayers")! as! [String]//プレイヤーの名前を取得して[String]に代入
         rolenumberArray = saveData.arrayForKey("RoleData")! as! [Int] //役職の人数を取得してNSArrayに代入
-        //roleofplayerArray = saveData.arrayForKey("RolePlayerData")! as! [String]//プレイヤーの役職を代入
+        roleofplayerArray = saveData.arrayForKey("RolePlayerData")! as! [String]//プレイヤーの役職を代入、なぜコメントアウト?
         roleofplayerArray = saveData.arrayForKey("ChangedRoleArray")! as! [String]
         votedDataArray = saveData.arrayForKey("votedPlayer")! as! [String]//投票情報
         print("プレイヤー:\(myPlayerItems)")
         print("役職の人数:\(rolenumberArray)")
-        print("\(roleofplayerArray)")
+        print("\(roleofplayerArray)")//違っている
         print("\(votedDataArray)")
         
         let rolexib = UINib(nibName: "ResultTableViewCell", bundle: nil)
