@@ -61,18 +61,20 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if changingrole.count == 0 {
             print("役職変更なし")
+            roleofplayerArray = saveData.arrayForKey("RolePlayerData")! as! [String]//変更前
         } else {
             print("役職変更あり")
+            roleofplayerArray = saveData.arrayForKey("ChangedRoleArray")! as! [String]//変更後
         }
         
         myPlayerItems = saveData.arrayForKey("allPlayers")! as! [String]//プレイヤーの名前を取得して[String]に代入
         rolenumberArray = saveData.arrayForKey("RoleData")! as! [Int] //役職の人数を取得してNSArrayに代入
-        roleofplayerArray = saveData.arrayForKey("RolePlayerData")! as! [String]//プレイヤーの役職を代入、なぜコメントアウト?
-        roleofplayerArray = saveData.arrayForKey("ChangedRoleArray")! as! [String]
+        //roleofplayerArray = saveData.arrayForKey("RolePlayerData")! as! [String]//プレイヤーの役職を代入、変更前のやつだからコメントアウト
+        //roleofplayerArray = saveData.arrayForKey("ChangedRoleArray")! as! [String]
         votedDataArray = saveData.arrayForKey("votedPlayer")! as! [String]//投票情報
         print("プレイヤー:\(myPlayerItems)")
         print("役職の人数:\(rolenumberArray)")
-        print("\(roleofplayerArray)")//違っている
+        print("\(roleofplayerArray)")
         print("\(votedDataArray)")
         
         let rolexib = UINib(nibName: "ResultTableViewCell", bundle: nil)
@@ -234,7 +236,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
             //以下、変更後のチーム先から探す
             //入れ替わられたプレイヤーは怪盗
             searchindex = villagerteamroleArray.indexOf("怪盗")!
-            villagerteamArray[searchindex] = changingrole[1]//"最初の役職→怪盗"と表示
+            villagerteamroleArray[searchindex] = changingrole[1]//"最初の役職→怪盗"と表示
             
             if changedrole == "人狼" {
                 searchindex = werewolfteamArray.indexOf(firstkaitouguy)!
