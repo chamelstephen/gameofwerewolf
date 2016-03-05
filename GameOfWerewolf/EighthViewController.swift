@@ -104,22 +104,31 @@ class EighthViewController: UIViewController {
                 let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
                 self.presentViewController( targetView, animated: true, completion: nil)
             } else {
-                performSegueWithIdentifier("RoleWorking", sender: nil)
+                //performSegueWithIdentifier("RoleWorking", sender: nil)
+                
+                savedData.setObject( myRole, forKey: "RoleEighthTORoleWorking")
+                savedData.setObject( myName, forKey: "NameEighthTORoleWorking")
+                
+                let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "RoleWorking" )
+                self.presentViewController( targetView, animated: true, completion: nil)
             }
             
             print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
         }
     }
     
+    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "RoleWorking") {
             
-            // SecondViewControllerクラスをインスタンス化してsegue（画面遷移）で値を渡せるようにバンドルする
-            let roleworkingView : RoleWorkingViewController = segue.destinationViewController as! RoleWorkingViewController
-            // secondView（バンドルされた変数）に受け取り用の変数を引数とし_paramを渡す（_paramには渡したい値）
-            // この時SecondViewControllerにて受け取る同型の変数を用意しておかないとエラーになる
+            let roleworkingView : NavigationofRoleWorkingViewController = segue.destinationViewController as! NavigationofRoleWorkingViewController
+    
+            /*
             roleworkingView.RoleString = myRole//役職を代入
             roleworkingView.NameString = myName//名前を代入
+            */
+            
         }
     }
+*/
 }

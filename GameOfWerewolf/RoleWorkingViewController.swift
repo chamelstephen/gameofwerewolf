@@ -34,13 +34,17 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)//navigationbarを非表示
+        
+        RoleString = savedData.objectForKey("RoleEighthTORoleWorking") as! String
+        NameString = savedData.objectForKey("NameEighthTORoleWorking") as! String
+        
         if RoleString != "人狼" {
              nextButton.hidden = true
         }
         
         //DirectionLabel.text
         if RoleString == "人狼" {
-            DirectionLabel.text = "他の人狼のプレイヤーを確認しましょう"
+            DirectionLabel.text = "他の人狼の\nプレイヤーを確認しましょう"
         } else if RoleString == "占い師" {
             DirectionLabel.text = "占うプレイヤーを選びましょう"
         } else if RoleString == "怪盗" {
@@ -65,10 +69,12 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
             
             if copymyRoleItems.contains("人狼") == true {
                 //他に人狼がいる場合
-                while copymyRoleItems.contains("人狼") == false {
+                
+                //人狼がいない場合になっている↓
+                while copymyRoleItems.contains("人狼") != false {
                     mywerewolfItems.append(copymyPlayerItems[copymyRoleItems.indexOf("人狼")!])//人狼のプレイヤーのインデックス
-                    copymyRoleItems.removeAtIndex(copymyRoleItems.indexOf("人狼")!)
                     copymyPlayerItems.removeAtIndex(copymyRoleItems.indexOf("人狼")!)
+                    copymyRoleItems.removeAtIndex(copymyRoleItems.indexOf("人狼")!)
                 }
                 print("プレイヤー以外の人狼は:\(mywerewolfItems)")
             } else {
@@ -154,6 +160,9 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
                     (action: UIAlertAction!) -> Void in
                     print("Yes")
                     
+                    self.savedData.setObject( displaytext, forKey: "displayTextRoleWorkingTORoleChanging")
+                    
+                    /*
                     let AlertUranai: UIAlertController = UIAlertController(title: "占いの結果", message: "結果は\(displaytext)でした", preferredStyle: UIAlertControllerStyle.Alert)
                     
                     let cancelAction: UIAlertAction = UIAlertAction(title: "確認しました", style: UIAlertActionStyle.Cancel,
@@ -166,8 +175,12 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
                     AlertUranai.addAction(cancelAction)
                     
                     self.presentViewController(alert, animated: true, completion: nil)
+                    */
+                    
+                    let targetView = self.storyboard!.instantiateViewControllerWithIdentifier("RoleChangeOrSee")
+                    targetView.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve//画面遷移。暗くなるやつ。
             })
-        
+            
             //AlertもActionSheetも同じ
             alert.addAction(cancelAction)
             alert.addAction(defaultAction)
@@ -193,6 +206,33 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
                     (action: UIAlertAction!) -> Void in
                     print("Yes")
                     
+                    let index = self.myPlayerItems.indexOf(self.NameString)
+                    self.myRoleItems[index!] = displaytext
+                    
+                    if indexPath.row != self.myPlayerItems.count - 1 {
+                        //他のプレイヤーと入れ替わった場合、その入れ替わられたプレイヤーの役職は怪盗になる
+                        let rolechangedplayer: String = self.myKaitouItems[indexPath.row]
+                        let index2 = self.myPlayerItems.indexOf(rolechangedplayer)
+                        self.myRoleItems[index2!] = "怪盗"
+                    }
+                    
+                    if displaytext != "怪盗" {
+                        //役職が変更になったとき
+                        let changeString: String = "怪盗→\(displaytext)"
+                        let changeString2: String = "\(displaytext)→怪盗"
+                        
+                        let changingrole: [String] = [changeString, changeString2, displaytext, self.NameString, self.myKaitouItems[indexPath.row]]//myKaitouItems[indexPath.row]は変更後、怪盗
+                        print("\(changingrole)")
+                        self.savedData.setObject(changingrole, forKey: "ChangingofRole")
+                    }
+                    self.savedData.setObject(self.myRoleItems, forKey: "ChangedRoleArray")//変更後の役職配列を保存
+                    
+                    self.savedData.setObject( displaytext, forKey: "displayTextRoleWorkingTORoleChanging")
+                    
+                    let targetView = self.storyboard!.instantiateViewControllerWithIdentifier("RoleChangeOrSee")
+                    targetView.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve//画面遷移。暗くなるやつ。
+                    
+                    /*
                     let AlertUranai: UIAlertController = UIAlertController(title: "変装の結果", message: "あなたは\(displaytext)に変装しました", preferredStyle: UIAlertControllerStyle.Alert)
                     
                     let cancelAction: UIAlertAction = UIAlertAction(title: "確認しました", style: UIAlertActionStyle.Cancel,
@@ -222,13 +262,16 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
                             
                             let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
                             self.presentViewController( targetView, animated: true, completion: nil)
+
                     })
                     
                     AlertUranai.addAction(cancelAction)
                     
                     self.presentViewController(alert, animated: true, completion: nil)
+                    */
             })
             
+                    
             //AlertもActionSheetも同じ
             alert.addAction(cancelAction)
             alert.addAction(defaultAction)
@@ -253,7 +296,7 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RoleWorkingCell", forIndexPath: indexPath) as! RoleWorkingTableViewCell
         
-        cell.myNumberLabel!.text = "\(indexPath.row)"
+        //cell.myNumberLabel!.text = "\(indexPath.row)"
         
         if RoleString == "人狼" {
             cell.mytTextLabel!.text = "\(mywerewolfItems[indexPath.row])"

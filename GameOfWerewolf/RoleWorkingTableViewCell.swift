@@ -10,7 +10,7 @@ import UIKit
 
 class RoleWorkingTableViewCell: UITableViewCell {
     
-    @IBOutlet var myNumberLabel: UILabel!
+    //@IBOutlet var myNumberLabel: UILabel! //xibで削除済み
     @IBOutlet var mytTextLabel: UILabel!
     @IBOutlet var myImageView: UIImageView!
 
