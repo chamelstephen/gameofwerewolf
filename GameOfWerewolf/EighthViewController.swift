@@ -85,6 +85,7 @@ class EighthViewController: UIViewController {
     }
     */
 
+    /*
     @IBAction func next() {
         if arraydefault.count == 0{
             let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" ) 
@@ -116,11 +117,59 @@ class EighthViewController: UIViewController {
             print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
         }
     }
+    */
+    
+    @IBAction func next() {
+    //条件分岐で、次の画面遷移先を選ぶ
+        var operation: Bool!
+        if arraydefault.count == 0{
+            //遷移先の変更
+            
+            operation = true
+            /*
+            let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" )
+            self.presentViewController( targetView, animated: true, completion: nil)
+            */
+        } else {
+            operation = false
+        }
+        savedData.setBool(operation, forKey: "segueChangeAtEighth")
+        
+        if myRole == "てるてる" {
+            if arraydefault.count == 0 {
+                let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" )
+                self.presentViewController( targetView, animated: true, completion: nil)
+            } else {
+                let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
+                self.presentViewController( targetView, animated: true, completion: nil)
+            }
+        } else if myRole == "村人" {
+            if arraydefault.count == 0 {
+                let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" )
+                self.presentViewController( targetView, animated: true, completion: nil)
+            } else {
+                let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
+                self.presentViewController( targetView, animated: true, completion: nil)
+            }
+        } else {
+            //performSegueWithIdentifier("RoleWorking", sender: nil)
+            
+            savedData.setObject( myRole, forKey: "RoleEighthTORoleWorking")
+            savedData.setObject( myName, forKey: "NameEighthTORoleWorking")
+            
+            let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "RoleWorking" )
+            self.presentViewController( targetView, animated: true, completion: nil)
+        }
+        
+        print("appdelegate.playerarray:\(appdelegate.playerarray.count)")
+        
+    }
+    
     
     /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "RoleWorking") {
-            
+    
             let roleworkingView : NavigationofRoleWorkingViewController = segue.destinationViewController as! NavigationofRoleWorkingViewController
     
             /*

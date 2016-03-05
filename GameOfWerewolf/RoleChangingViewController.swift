@@ -14,7 +14,7 @@ class RoleChangingViewController: UIViewController {
     
     var savedData = NSUserDefaults.standardUserDefaults()
     var displayString: String!
-    
+    var segueoperation: Bool!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class RoleChangingViewController: UIViewController {
         
         displayString = savedData.objectForKey("displayTextRoleWorkingTORoleChanging") as! String
         resultLabel.text = displayString
+        segueoperation = savedData.boolForKey("segueChangeAtEighth")
         
     }
 
@@ -44,8 +45,14 @@ class RoleChangingViewController: UIViewController {
 
     
     @IBAction func next() {
-        let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
-        self.presentViewController( targetView, animated: true, completion: nil)
+        if segueoperation == true {
+            let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" )
+            self.presentViewController( targetView, animated: true, completion: nil)
+        } else {
+            let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
+            self.presentViewController( targetView, animated: true, completion: nil)
+        }
+        
     
     }
 }

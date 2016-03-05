@@ -57,7 +57,9 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         mytableview.registerClass(UITableViewCell.self, forCellReuseIdentifier: "ResultCell")
         
         var changingrole: [String] = saveData.arrayForKey("ChangingofRole")! as! [String]
-        if changingrole.isEmpty == true {
+        
+        print("changingrole: \(changingrole)")
+        if changingrole.count == 0 {
             print("役職変更なし")
         } else {
             print("役職変更あり")
@@ -219,7 +221,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         //役職変更を可視化
-        if changingrole.isEmpty == true {
+        if changingrole.count == 0 {
             print("役職変更なし")
         } else {
             print("役職変更あり")

@@ -30,6 +30,7 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
     var copymyRoleItems: [String] = []
     var copymyPlayerItems: [String] = []
 
+    var segueoperation: Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +38,9 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
         
         RoleString = savedData.objectForKey("RoleEighthTORoleWorking") as! String
         NameString = savedData.objectForKey("NameEighthTORoleWorking") as! String
+        
+        //遷移先の変更について
+        segueoperation = savedData.boolForKey("segueChangeAtEighth")//trueならば、遷移先は話し合いの開始("gamestart")へ
         
         if RoleString != "人狼" {
              nextButton.hidden = true
@@ -139,7 +143,7 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
     }
     */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if RoleString != "占い師" {
+        if RoleString == "占い師" {
             var displaytext: String = copymyRoleItems[indexPath.row]
             if indexPath.row == myPlayerItems.count - 1 {
                 displaytext = "\(copymyRoleItems[indexPath.row]),\(copymyRoleItems[indexPath.row + 1])"
@@ -162,23 +166,40 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
                     
                     self.savedData.setObject( displaytext, forKey: "displayTextRoleWorkingTORoleChanging")
                     
-                    /*
+                    
                     let AlertUranai: UIAlertController = UIAlertController(title: "占いの結果", message: "結果は\(displaytext)でした", preferredStyle: UIAlertControllerStyle.Alert)
                     
                     let cancelAction: UIAlertAction = UIAlertAction(title: "確認しました", style: UIAlertActionStyle.Cancel,
                         handler: {
                             (action: UIAlertAction!) -> Void in
-                            let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
-                            self.presentViewController( targetView, animated: true, completion: nil)
+                            
+                            if self.segueoperation == true {
+                                let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" )
+                                self.presentViewController( targetView, animated: true, completion: nil)
+                                
+                            } else {
+                                let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
+                                self.presentViewController( targetView, animated: true, completion: nil)
+                            }
+                    
                     })
                     
                     AlertUranai.addAction(cancelAction)
                     
-                    self.presentViewController(alert, animated: true, completion: nil)
-                    */
+                    self.presentViewController(AlertUranai, animated: true, completion: nil)
                     
-                    let targetView = self.storyboard!.instantiateViewControllerWithIdentifier("RoleChangeOrSee")
-                    targetView.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve//画面遷移。暗くなるやつ。
+                    /*
+                    if self.segueoperation == true {
+                        let targetView = self.storyboard!.instantiateViewControllerWithIdentifier("RoleChangeOrSee")
+                        targetView.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve//画面遷移。暗くなるやつ。
+                        self.presentViewController(targetView, animated: true, completion: nil)
+                        
+                    } else {
+                        let targetView = self.storyboard!.instantiateViewControllerWithIdentifier("RoleChangeOrSee")
+                        targetView.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve//画面遷移。暗くなるやつ。
+                        self.presentViewController(targetView, animated: true, completion: nil)
+                    }
+                    */
             })
             
             //AlertもActionSheetも同じ
@@ -222,52 +243,47 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
                         let changeString2: String = "\(displaytext)→怪盗"
                         
                         let changingrole: [String] = [changeString, changeString2, displaytext, self.NameString, self.myKaitouItems[indexPath.row]]//myKaitouItems[indexPath.row]は変更後、怪盗
-                        print("\(changingrole)")
+                        print("changingrole:\(changingrole)")
                         self.savedData.setObject(changingrole, forKey: "ChangingofRole")
                     }
                     self.savedData.setObject(self.myRoleItems, forKey: "ChangedRoleArray")//変更後の役職配列を保存
                     
                     self.savedData.setObject( displaytext, forKey: "displayTextRoleWorkingTORoleChanging")
                     
-                    let targetView = self.storyboard!.instantiateViewControllerWithIdentifier("RoleChangeOrSee")
-                    targetView.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve//画面遷移。暗くなるやつ。
                     
-                    /*
-                    let AlertUranai: UIAlertController = UIAlertController(title: "変装の結果", message: "あなたは\(displaytext)に変装しました", preferredStyle: UIAlertControllerStyle.Alert)
+                    let AlertKaitou: UIAlertController = UIAlertController(title: "変装の結果", message: "あなたは\(displaytext)に変装しました", preferredStyle: UIAlertControllerStyle.Alert)
                     
                     let cancelAction: UIAlertAction = UIAlertAction(title: "確認しました", style: UIAlertActionStyle.Cancel,
                         handler: {
                             (action: UIAlertAction!) -> Void in
                             
-                            let index = self.myPlayerItems.indexOf(self.NameString)
-                            self.myRoleItems[index!] = displaytext
-                            
-                            if indexPath.row != self.myPlayerItems.count - 1 {
-                                //他のプレイヤーと入れ替わった場合、その入れ替わられたプレイヤーの役職は怪盗になる
-                                let rolechangedplayer: String = self.myKaitouItems[indexPath.row]
-                                let index2 = self.myPlayerItems.indexOf(rolechangedplayer)
-                                self.myRoleItems[index2!] = "怪盗"
-                            }
-                            
-                            if displaytext != "怪盗" {
-                                //役職が変更になったとき
-                                let changeString: String = "怪盗→\(displaytext)"
-                                let changeString2: String = "\(displaytext)→怪盗"
+                            if self.segueoperation == true {
+                                let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" )
+                                self.presentViewController( targetView, animated: true, completion: nil)
                                 
-                                let changingrole: [String] = [changeString, changeString2, displaytext, self.NameString, self.myKaitouItems[indexPath.row]]//myKaitouItems[indexPath.row]は変更後、怪盗
-                                print("\(changingrole)")
-                                self.savedData.setObject(changingrole, forKey: "ChangingofRole")
+                            } else {
+                                let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
+                                self.presentViewController( targetView, animated: true, completion: nil)
                             }
-                            self.savedData.setObject(self.myRoleItems, forKey: "ChangedRoleArray")//変更後の役職配列を保存
                             
-                            let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
-                            self.presentViewController( targetView, animated: true, completion: nil)
 
                     })
                     
-                    AlertUranai.addAction(cancelAction)
+                    AlertKaitou.addAction(cancelAction)
                     
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.presentViewController(AlertKaitou, animated: true, completion: nil)
+                    
+                    /*
+                    if self.segueoperation == true {
+                        let targetView = self.storyboard!.instantiateViewControllerWithIdentifier("RoleChangeOrSee")
+                        targetView.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve//画面遷移。暗くなるやつ。
+                        self.presentViewController(targetView, animated: true, completion: nil)
+                        
+                    } else {
+                        let targetView = self.storyboard!.instantiateViewControllerWithIdentifier("RoleChangeOrSee")
+                        targetView.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve//画面遷移。暗くなるやつ。
+                        self.presentViewController(targetView, animated: true, completion: nil)
+                    }
                     */
             })
             
@@ -310,7 +326,12 @@ class RoleWorkingViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func next() {
-        let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
-        self.presentViewController( targetView, animated: true, completion: nil)
+        if segueoperation == true {
+            let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "gamestart" )
+            self.presentViewController( targetView, animated: true, completion: nil)
+        } else {
+            let targetView = self.storyboard!.instantiateViewControllerWithIdentifier( "roleprecheck" )
+            self.presentViewController( targetView, animated: true, completion: nil)
+        }
     }
 }
